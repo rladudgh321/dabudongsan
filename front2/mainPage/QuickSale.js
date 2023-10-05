@@ -11,7 +11,7 @@ import 'swiper/css/navigation';
 import 'swiper/css/pagination';
 import 'swiper/css/scrollbar';
 
-const RecommedLand = () => {
+const QuickSale = () => {
     const [width, setWidth] = useState(()=>{
         return globalThis.innerWidth <768 ? 4: 6;
     });
@@ -27,8 +27,8 @@ const RecommedLand = () => {
     return (
         <>
             <div style={{textAlign:'center', margin:'20px'}}>
-                <h2>이달의 추천 부동산</h2>
-                <p>다부 부동산이 추천하는 이 달의 매물을 확인해보세요! </p>
+                <h2>급매물</h2>
+                <p>급매 매물 모음입니다</p>
             </div>
             <ConfigProvider
                 theme={{
@@ -121,4 +121,4 @@ const RecommedLand = () => {
     );
 }
 
-export default RecommedLand;
+export default QuickSale;

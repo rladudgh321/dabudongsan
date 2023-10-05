@@ -5,6 +5,9 @@ import SearchMapList from '../mainPage/SearchMapList';
 import WhatTypeLand from '../mainPage/WhatTypeLand';
 import IfLandType from '../mainPage/IfLandType';
 import RecommedLand from '../mainPage/RecommedLand';
+import QuickSale from '../mainPage/QuickSale';
+import RecentlyLand from '../mainPage/RecentlyLand';
+import Contact from '../mainPage/Contact';
 
 const Home = () => {
   return (
@@ -15,17 +18,12 @@ const Home = () => {
         <WhatTypeLand />
         <IfLandType />
         <RecommedLand />
+        <QuickSale />
+        <RecentlyLand />
+        <Contact />
       </AppLayout>
     </>
   );
 }
 
 export default Home;
-
-/*
-메인 사진
-지도목록검색
-whatTypeLand
-Ifland
-
-*/
