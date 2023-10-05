@@ -8,6 +8,8 @@ import RecommedLand from '../mainPage/RecommedLand';
 import QuickSale from '../mainPage/QuickSale';
 import RecentlyLand from '../mainPage/RecentlyLand';
 import Contact from '../mainPage/Contact';
+import Institue from '../mainPage/Institue';
+import Footer from '../mainPage/Footer';
 
 const Home = () => {
   return (
@@ -21,6 +23,8 @@ const Home = () => {
         <QuickSale />
         <RecentlyLand />
         <Contact />
+        <Institue />
+        <Footer />
       </AppLayout>
     </>
   );
