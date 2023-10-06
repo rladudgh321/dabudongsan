@@ -1,6 +1,6 @@
 import React, { useCallback, useState } from 'react';
 
-const useIput = (init) => {
+const useInput = (init) => {
     const [value, setter] = useState(init);
     const handler = useCallback((e)=>{
         setter(e.target.value);
@@ -8,4 +8,4 @@ const useIput = (init) => {
     return [value, handler, setter];
 }
 
-export default useIput;
+export default useInput;

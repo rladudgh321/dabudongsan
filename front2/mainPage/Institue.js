@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useMemo, useState } from 'react';
 // import Swiper core and required modules
 import { Navigation, Pagination, Scrollbar, A11y } from 'swiper/modules';
 
@@ -24,6 +24,14 @@ const Institue = () => {
             window.removeEventListener('resize', handleResize);
         }
     },[]);
+    const getWidth = useMemo(()=>{
+        const gw = globalThis.innerWidth <768;
+        return gw ? '50vw' : '15vw';
+    },[width]);
+//     const getHeight = useMemo(()=> {
+//         const gh = globalThis.innerWidth<768;
+//         return  gh ? '100px' : '10vh';
+//     },[width])
     return (
         <>
             <ConfigProvider
@@ -38,49 +46,48 @@ const Institue = () => {
                 style={{margin:'10px'}}
                 modules={[Navigation, Pagination, Scrollbar, A11y]}
                 spaceBetween={10}
+                
                 slidesPerView={width}
-                navigation
                 pagination={{ clickable: true }}
-                scrollbar={{ draggable: true }}
                 onSwiper={(swiper) => console.log(swiper)}
                 onSlideChange={() => console.log('slide change')}
                 >
                 
                 <SwiperSlide>
-                        <div style={{ maxHeight:'100px', backgroundImage:'url("/img/4/1.png")', height:'100px', width:'340px', backgroundPosition:'center', backgroundRepeat:'no-repeat', backgroundSize:'cover', border:'1px solid silver'}}></div>
+                        <div style={{ maxHeight:'100px', backgroundImage:'url("/img/4/1.png")', height:'70px', width:getWidth, backgroundPosition:'center', backgroundRepeat:'no-repeat', backgroundSize:'cover', border:'1px solid silver'}}></div>
                 </SwiperSlide>
                 <SwiperSlide>
-                        <div style={{ maxHeight:'100px', backgroundImage:'url("/img/4/2.png")', height:'100px', width:'340px', backgroundPosition:'center', backgroundRepeat:'no-repeat', backgroundSize:'cover', border:'1px solid silver'}}></div>
+                        <div style={{ maxHeight:'100px', backgroundImage:'url("/img/4/2.png")', height:'70px', width:getWidth, backgroundPosition:'center', backgroundRepeat:'no-repeat', backgroundSize:'cover', border:'1px solid silver'}}></div>
                 </SwiperSlide>
                 <SwiperSlide>
-                        <div style={{ maxHeight:'100px', backgroundImage:'url("/img/4/3.png")', height:'100px', width:'340px', backgroundPosition:'center', backgroundRepeat:'no-repeat', backgroundSize:'cover', border:'1px solid silver'}}></div>
+                        <div style={{ maxHeight:'100px', backgroundImage:'url("/img/4/3.png")', height:'70px', width:getWidth, backgroundPosition:'center', backgroundRepeat:'no-repeat', backgroundSize:'cover', border:'1px solid silver'}}></div>
                 </SwiperSlide>
                 <SwiperSlide>
-                        <div style={{ maxHeight:'100px', backgroundImage:'url("/img/4/4.png")', height:'100px', width:'340px', backgroundPosition:'center', backgroundRepeat:'no-repeat', backgroundSize:'cover', border:'1px solid silver'}}></div>
+                        <div style={{ maxHeight:'100px', backgroundImage:'url("/img/4/4.png")', height:'70px', width:getWidth, backgroundPosition:'center', backgroundRepeat:'no-repeat', backgroundSize:'cover', border:'1px solid silver'}}></div>
                 </SwiperSlide>
                 <SwiperSlide>
-                        <div style={{ maxHeight:'100px', backgroundImage:'url("/img/4/5.png")', height:'100px', width:'340px', backgroundPosition:'center', backgroundRepeat:'no-repeat', backgroundSize:'cover', border:'1px solid silver'}}></div>
+                        <div style={{ maxHeight:'100px', backgroundImage:'url("/img/4/5.png")', height:'70px', width:getWidth, backgroundPosition:'center', backgroundRepeat:'no-repeat', backgroundSize:'cover', border:'1px solid silver'}}></div>
                 </SwiperSlide>
                 <SwiperSlide>
-                        <div style={{ maxHeight:'100px', backgroundImage:'url("/img/4/6.png")', height:'100px', width:'340px', backgroundPosition:'center', backgroundRepeat:'no-repeat', backgroundSize:'cover', border:'1px solid silver'}}></div>
+                        <div style={{ maxHeight:'100px', backgroundImage:'url("/img/4/6.png")', height:'70px', width:getWidth, backgroundPosition:'center', backgroundRepeat:'no-repeat', backgroundSize:'cover', border:'1px solid silver'}}></div>
                 </SwiperSlide>
                 <SwiperSlide>
-                        <div style={{ maxHeight:'100px', backgroundImage:'url("/img/4/7.png")', height:'100px', width:'340px', backgroundPosition:'center', backgroundRepeat:'no-repeat', backgroundSize:'cover', border:'1px solid silver'}}></div>
+                        <div style={{ maxHeight:'100px', backgroundImage:'url("/img/4/7.png")', height:'70px', width:getWidth, backgroundPosition:'center', backgroundRepeat:'no-repeat', backgroundSize:'cover', border:'1px solid silver'}}></div>
                 </SwiperSlide>
                 <SwiperSlide>
-                        <div style={{ maxHeight:'100px', backgroundImage:'url("/img/4/8.png")', height:'100px', width:'340px', backgroundPosition:'center', backgroundRepeat:'no-repeat', backgroundSize:'cover', border:'1px solid silver'}}></div>
+                        <div style={{ maxHeight:'100px', backgroundImage:'url("/img/4/8.png")', height:'70px', width:getWidth, backgroundPosition:'center', backgroundRepeat:'no-repeat', backgroundSize:'cover', border:'1px solid silver'}}></div>
                 </SwiperSlide>
                 <SwiperSlide>
-                        <div style={{ maxHeight:'100px', backgroundImage:'url("/img/4/9.jpg")', height:'100px', width:'340px', backgroundPosition:'center', backgroundRepeat:'no-repeat', backgroundSize:'cover', border:'1px solid silver'}}></div>
+                        <div style={{ maxHeight:'100px', backgroundImage:'url("/img/4/9.jpg")', height:'70px', width:getWidth, backgroundPosition:'center', backgroundRepeat:'no-repeat', backgroundSize:'cover', border:'1px solid silver'}}></div>
                 </SwiperSlide>
                 <SwiperSlide>
-                        <div style={{ maxHeight:'100px', backgroundImage:'url("/img/4/10.png")', height:'100px', width:'340px', backgroundPosition:'center', backgroundRepeat:'no-repeat', backgroundSize:'cover', border:'1px solid silver'}}></div>
+                        <div style={{ maxHeight:'100px', backgroundImage:'url("/img/4/10.png")', height:'70px', width:getWidth, backgroundPosition:'center', backgroundRepeat:'no-repeat', backgroundSize:'cover', border:'1px solid silver'}}></div>
                 </SwiperSlide>
                 <SwiperSlide>
-                        <div style={{ maxHeight:'100px', backgroundImage:'url("/img/4/11.png")', height:'100px', width:'340px', backgroundPosition:'center', backgroundRepeat:'no-repeat', backgroundSize:'cover', border:'1px solid silver'}}></div>
+                        <div style={{ maxHeight:'100px', backgroundImage:'url("/img/4/11.png")', height:'70px', width:getWidth, backgroundPosition:'center', backgroundRepeat:'no-repeat', backgroundSize:'cover', border:'1px solid silver'}}></div>
                 </SwiperSlide>
                 <SwiperSlide>
-                        <div style={{ maxHeight:'100px', backgroundImage:'url("/img/4/12.png")', height:'100px', width:'340px', backgroundPosition:'center', backgroundRepeat:'no-repeat', backgroundSize:'cover', border:'1px solid silver'}}></div>
+                        <div style={{ maxHeight:'100px', backgroundImage:'url("/img/4/12.png")', height:'70px', width:getWidth, backgroundPosition:'center', backgroundRepeat:'no-repeat', backgroundSize:'cover', border:'1px solid silver'}}></div>
                 </SwiperSlide>
             </Swiper>
             </ConfigProvider>
