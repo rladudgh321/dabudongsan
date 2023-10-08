@@ -1,6 +1,7 @@
 import { combineReducers } from 'redux';
 import user from './user';
 import post from './post';
+import location from './location';
 import { HYDRATE } from 'next-redux-wrapper';
 
 const rootReducer = combineReducers({
@@ -15,6 +16,7 @@ const rootReducer = combineReducers({
     },
     user,
     post,
+    location,
 });
 
 export default rootReducer;

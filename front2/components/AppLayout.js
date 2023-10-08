@@ -4,6 +4,7 @@ import { MenuOutlined } from '@ant-design/icons';
 import { useSelector, useDispatch } from 'react-redux';
 import { LOG_OUT_REQUEST } from '@/reducer/user';
 import Link from 'next/link';
+import Footer from '@/mainPage/Footer';
 
 const AppLayout = ({children}) => {
   const dispatch = useDispatch();
@@ -41,10 +42,10 @@ const items = [
     label: '매물검색',
     key: 'search',
   },{
-    label: '매물 의뢰',
-    key: 'contact',
+    label: <Link href='/request'>매물 의뢰</Link>,
+    key: 'request',
   },{
-    label: '공지사항',
+    label: <Link href='/note'>공지사항</Link>,
     key: 'note',
   },{
     label: <Link href='/intro'>회사소개</Link>,
@@ -91,6 +92,7 @@ const items = [
                 </Col>
             </Row>
             {children}
+            <Footer />
         </>
     );
 }

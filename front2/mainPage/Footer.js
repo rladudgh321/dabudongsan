@@ -4,7 +4,10 @@ const Footer = () => {
     return (
         <>
             <div style={{ marginTop:'15px'}}>
-                <div style={{ backgroundColor:'#545454', height:'150px', color:'white', fontSize:'0.8rem', padding:'10px', lineHeight:'1.2rem'}}>
+                <div style={{ display:'flex',backgroundColor:'#545454', height:'150px', color:'white', fontSize:'0.8rem', padding:'10px', lineHeight:'1.2rem'}}>
+                    <div>
+                        <img src='/img/logo.png' />
+                    </div>
                     <aside>
                         회사명: 다부부동산<br />
                         주소: 경북 칠곡 다부다부<br />

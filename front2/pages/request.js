@@ -1,35 +1,52 @@
-import React, { useCallback } from 'react';
-import { Button, List, Dropdown, Space } from 'antd';
+import React, { useState, useCallback } from 'react';
+import { Button, List, Dropdown, Space, Input, Form } from 'antd';
 import AppLayout from '@/components/AppLayout';
+import { useSelector, useDispatch } from 'react-redux';
+import { UpdateEumpmeon, UpdateLi, SetLocations, LAND_REQUEST } from '@/reducer/location';
+import useInput from '@/hooks/useInput';
+
 const request = () => {
-    const chilgok = [{
-        key:'1',
-        label:'지천면'
-    },{
-        key:'2',
-        label:'왜관읍'
-    },{
-        key:'3',
-        label:'가산면'
-    },{
-        key:'4',
-        label:'동명면'
-    },{
-        key:'5',
-        label:'석적읍'
-    },{
-        key:'6',
-        label:'북삼읍'
-    },{
-        key:'7',
-        label:'약목면'
-    },{
-        key:'8',
-        label:'기산면'
-    }];
+    const dispatch = useDispatch();
+    const { chilgok, eumpmeon, eupArray, li } = useSelector((state) => state.location);
+    const [ showMore, setShowMore ] = useState(false);
     const onMenuClick = useCallback((e) => {
-        console.log('click', e);
+        chilgok.map((v) => {
+            if(v.key === parseInt(e.key, 10)){
+                setShowMore(true);
+                console.log('click', e, v.label, eumpmeon);
+                return dispatch({
+                    type: UpdateEumpmeon,
+                    data: { eup: v.label, more:v.more },
+                })
+            }
+        });
+      },[eumpmeon]);
+      const onVmoreClick = useCallback((e)=>{
+        eupArray.map((v) => {
+            if(v.key === parseInt(e.key, 10)){
+                return dispatch({
+                    type: UpdateLi,
+                    data: v.label,
+                })
+            }
+        });
+      },[eupArray, li]);
+      const setLocation = useCallback(()=>{
+        return dispatch({
+            type:SetLocations
+        })
       },[]);
+      const [address, onChangeAddress] = useInput('')
+      const onSubmit = useCallback(()=>{
+        if(eumpmeon === '읍/면' || li === '리' || !address) {
+            return alert('항목을 입력해주세요')
+        }
+        console.log(`${eumpmeon} ${li} ${address}`);
+        dispatch({
+            type: LAND_REQUEST,
+            data: `${eumpmeon} ${li} ${address}`
+        })
+      },[eumpmeon, li, address]);
     return (
         <>
             <AppLayout>
@@ -51,16 +68,32 @@ const request = () => {
                         <List.Item>
                             <div>위치</div>
                             <div>
-                                <div><Button>경북 칠곡군</Button></div>
+                                <div><Button onClick={setLocation}>경북 칠곡군</Button></div>
                                 <div>
-                                <Dropdown.Button
-                                    menu={{
-                                        items:chilgok,
-                                        onClick: onMenuClick,
-                                    }}
-                                    >
-                                    <div>읍/면</div>
-                                </Dropdown.Button>
+                                    <Dropdown.Button
+                                        menu={{
+                                            items:chilgok,
+                                            onClick: onMenuClick,
+                                        }}
+                                        >
+                                        <div>{eumpmeon}</div>
+                                    </Dropdown.Button>
+                                </div>
+                                <div>
+                                    { showMore && <Dropdown.Button
+                                        menu={{
+                                            items:eupArray,
+                                            onClick: onVmoreClick,
+                                        }}
+                                        >
+                                        <div>{li}</div>
+                                    </Dropdown.Button>}
+                                </div>
+                                <div>
+                                    <Form onFinish={onSubmit}>
+                                        <Input value={address} onChange={onChangeAddress} placeholder='상세주소' />
+                                        <Button htmlType='submit'>전송</Button>
+                                    </Form>
                                 </div>
                             </div>
                             
@@ -73,38 +106,3 @@ const request = () => {
 }
 
 export default request;
-
-/*
-import React from 'react';
-import { Button, Dropdown, Space } from 'antd';
-const onMenuClick = (e) => {
-  console.log('click', e);
-};
-const items = [
-  {
-    key: '1',
-    label: '1st item',
-  },
-  {
-    key: '2',
-    label: '2nd item',
-  },
-  {
-    key: '3',
-    label: '3rd item',
-  },
-];
-const App = () => (
-  <Space direction="vertical">
-    <Dropdown.Button
-      menu={{
-        items,
-        onClick: onMenuClick,
-      }}
-    >
-      Actions
-    </Dropdown.Button>
-  </Space>
-);
-export default App;
-*/
