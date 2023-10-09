@@ -1,6 +1,6 @@
 import React from 'react';
 import AppLayout from '../components/AppLayout';
-import MainPicture from '../mainPage/mainPicture';
+import MainPicture from '@/mainPage/MainPicture';
 import SearchMapList from '../mainPage/SearchMapList';
 import WhatTypeLand from '../mainPage/WhatTypeLand';
 import IfLandType from '../mainPage/IfLandType';

@@ -6,7 +6,7 @@ const IfLandType = () => {
         <>
             <div style={{textAlign:'center', margin:'15px'}}>
                 <h2>조건별 매물 찾아보기</h2>
-                <p>테마를 활용한 조건별 매물을 빠르게 찾아보아요!</p>
+                <div>테마를 활용한 조건별 매물을 빠르게 찾아보아요!</div>
             </div>
             <Row gutter={8} style={{ margin:'0 10px' }}>
                 <Col xs={12} md={6}>

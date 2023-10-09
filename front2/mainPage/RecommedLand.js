@@ -27,7 +27,7 @@ const RecommedLand = () => {
         <>
             <div style={{textAlign:'center', margin:'20px'}}>
                 <h2>이달의 추천 부동산</h2>
-                <p>다부 부동산이 추천하는 이 달의 매물을 확인해보세요! </p>
+                <div>다부 부동산이 추천하는 이 달의 매물을 확인해보세요! </div>
             </div>
             <Row>
                 <ConfigProvider

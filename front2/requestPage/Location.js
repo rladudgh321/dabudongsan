@@ -48,7 +48,7 @@ const Location = () => {
       },[eumpmeon, li, address]);
     return (
         <>
-            <div>위치</div>
+            <div style={{ width: '15vw'}}>위치</div>
             <div style={{ display:'flex' }}>
                 <div><Button onClick={setLocation}>경북 칠곡군</Button></div>
                 <div>

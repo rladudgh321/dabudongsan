@@ -28,7 +28,7 @@ const RecommedLand = () => {
         <>
             <div style={{textAlign:'center', margin:'20px'}}>
                 <h2>최신매물</h2>
-                <p>최신 매물을 만나보세요</p>
+                <div>최신 매물을 만나보세요</div>
             </div>
             <ConfigProvider
                 theme={{

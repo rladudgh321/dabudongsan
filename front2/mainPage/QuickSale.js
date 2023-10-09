@@ -28,7 +28,7 @@ const QuickSale = () => {
         <>
             <div style={{textAlign:'center', margin:'20px'}}>
                 <h2>급매물</h2>
-                <p>급매 매물 모음입니다</p>
+                <div>급매 매물 모음입니다</div>
             </div>
             <ConfigProvider
                 theme={{
