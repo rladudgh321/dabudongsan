@@ -7,6 +7,16 @@ import PriceHope from '@/requestPage/PriceHope';
 import LandType from '@/requestPage/LandType';
 import InfoRequest from '@/requestPage/InfoRequest'
 const request = () => {
+    const [btnState_Buy, setter_Buy] = useState(true);
+    const [btnState_Sell, setter_Sell] = useState(true);
+    const clickBtn_Buy = useCallback((e)=>{
+        setter_Buy((prev)=>!prev);
+        console.log(e.target.innerText, btnState_Buy);
+    },[btnState_Buy]);
+    const clickBtn_Sell = useCallback((e)=>{
+        setter_Sell((prev)=>!prev);
+        console.log(e.target.innerText, btnState_Sell);
+    },[btnState_Sell]);
     return (
         <>
             <AppLayout>
@@ -14,8 +24,8 @@ const request = () => {
                     bordered
                     header={<>
                     <div style={{display:'flex', paddingBottom:0}}>
-                        <div style={{ border:'1px solid silver', padding:'5px', borderRadius:'5px'}}>구해요</div>
-                        <div style={{ border:'1px solid silver', padding:'5px', borderRadius:'5px'}}>팔아요</div>
+                        {btnState_Buy ? <div style={{ border:'1px solid silver', padding:'5px', borderRadius:'5px', cursor:'pointer'}} onClick={clickBtn_Buy}>구해요</div> :<div style={{ border:'1px solid silver', padding:'5px', borderRadius:'5px', cursor:'pointer', background:'silver'}} onClick={clickBtn_Buy}>구해요</div>}
+                        {btnState_Sell ? <div style={{ border:'1px solid silver', padding:'5px', borderRadius:'5px', cursor:'pointer'}} onClick={clickBtn_Sell}>팔아요</div> : <div style={{ border:'1px solid silver', padding:'5px', borderRadius:'5px', cursor:'pointer', background:'silver'}} onClick={clickBtn_Sell}>팔아요</div>}
                     </div></>}
                     style={{padding:'10px'}}
                 >
