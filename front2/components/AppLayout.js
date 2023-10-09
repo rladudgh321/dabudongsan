@@ -51,7 +51,7 @@ const items = [
     label: <Link href='/intro'>회사소개</Link>,
     key: 'intro',
   },{
-    label: !width && <Button style={{borderRadius:'15px'}}>문의전화 010-4567-7890</Button>,
+    label: (!width) && <Button style={{borderRadius:'15px'}}>문의전화 010-4567-7890</Button>,
     key:'call'
   }
 ];
@@ -83,7 +83,7 @@ const items = [
                         <div style={{ position:'fixed', width:'100vw', top:0, right:0, left:0, bottom:0,
                         backgroundColor:'rgba(0,0,0,0.5)', zIndex:'10'
                       }} onClick={onToggleMenuBtn}></div>
-                    </ConfigProvider>
+                      </ConfigProvider>
                 ) }
                 <Col xs={0} md={18}>
                   <Menu mode='horizontal' items={items}>

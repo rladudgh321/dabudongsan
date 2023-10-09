@@ -58,7 +58,7 @@ const Location = () => {
                             onClick: onMenuClick,
                         }}
                         >
-                        <div>{eumpmeon}</div>
+                        <span>{eumpmeon}</span>
                     </Dropdown.Button>
                 </div>
                 <div>
@@ -68,7 +68,7 @@ const Location = () => {
                             onClick: onVmoreClick,
                         }}
                         >
-                        <div>{li}</div>
+                        <span>{li}</span>
                     </Dropdown.Button>}
                 </div>
                 <div>

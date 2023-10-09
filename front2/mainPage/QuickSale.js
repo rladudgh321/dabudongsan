@@ -49,66 +49,66 @@ const QuickSale = () => {
                 onSwiper={(swiper) => console.log(swiper)}
                 onSlideChange={() => console.log('slide change')}
                 >
-                <SwiperSlide >
+                <SwiperSlide key='quick1' >
                     <Card actions={[
-                    <div key='1st'><CheckCircleOutlined /><br />아파트<br /> </div>,
-                    <div key='2ed'><InsertRowRightOutlined /><br />15층</div>,
-                    <div key='3rd'><SmileOutlined /><br />방2,화1</div>
+                    <div key='1st1'><CheckCircleOutlined /><br />아파트<br /> </div>,
+                    <div key='2ed1'><InsertRowRightOutlined /><br />15층</div>,
+                    <div key='3rd1'><SmileOutlined /><br />방2,화1</div>
                     ]}
                     cover={<div style={{backgroundImage:'url("/img/3/1.png")', height:'150px'}}></div>}
                     >
                         <Card.Meta title='보1억2천  월50만' description='대전 동구 가양동 대주빌아파트' />
                     </Card>
                 </SwiperSlide>
-                <SwiperSlide>
+                <SwiperSlide key='quick2'>
                     <Card  actions={[
-                    <div key='1st'><CheckCircleOutlined /><br />빌라<br /> </div>,
-                    <div key='2ed'><InsertRowRightOutlined /><br />3층</div>,
-                    <div key='3rd'><SmileOutlined /><br />방3,화2</div>
+                    <div key='1st2'><CheckCircleOutlined /><br />빌라<br /> </div>,
+                    <div key='2ed2'><InsertRowRightOutlined /><br />3층</div>,
+                    <div key='3rd2'><SmileOutlined /><br />방3,화2</div>
                     ]}
                     cover={<div style={{backgroundImage:'url("/img/3/2.png")', height:'150px'}}></div>}
                     >
                         <Card.Meta title='보5억2천  월240만' description='대구 북구 동천동 태양하이츠' />
                     </Card>
                 </SwiperSlide>
-                <SwiperSlide>
+                <SwiperSlide key='quick3'>
                     <Card  actions={[
-                    <div key='1st'><CheckCircleOutlined /><br />오피스텔<br /> </div>,
-                    <div key='2ed'><InsertRowRightOutlined /><br />6층</div>,
-                    <div key='3rd'><SmileOutlined /><br />방3,화1</div>
+                    <div key='1st3'><CheckCircleOutlined /><br />오피스텔<br /> </div>,
+                    <div key='2ed3'><InsertRowRightOutlined /><br />6층</div>,
+                    <div key='3rd3'><SmileOutlined /><br />방3,화1</div>
                     ]}
                     cover={<div style={{backgroundImage:'url("/img/3/3.png")', height:'150px'}}></div>}
                     >
                         <Card.Meta title='매42억  융20억' description='경북 칠곡 황학리 다부오피스텔' />
                     </Card>
                 </SwiperSlide>
-                <SwiperSlide>
+                <SwiperSlide key='quick4'>
                     <Card  actions={[
-                    <div key='1st'><CheckCircleOutlined /><br />원룸<br /> </div>,
-                    <div key='2ed'><InsertRowRightOutlined /><br />2층</div>,
-                    <div key='3rd'><SmileOutlined /><br />방1,화1</div>
+                    <div key='1st4'><CheckCircleOutlined /><br />원룸<br /> </div>,
+                    <div key='2ed4'><InsertRowRightOutlined /><br />2층</div>,
+                    <div key='3rd4'><SmileOutlined /><br />방1,화1</div>
                     ]}
                     cover={<div style={{backgroundImage:'url("/img/3/4.png")', height:'150px'}}></div>}
                     >
                         <Card.Meta title='보 5천  월20만' description='대전 유성구 구암동 콩이네' />
                     </Card>
                 </SwiperSlide>
-                <SwiperSlide>
+                <SwiperSlide key='quick5'>
                     <Card  actions={[
-                    <div key='1st'><CheckCircleOutlined /><br />투룸<br /> </div>,
-                    <div key='2ed'><InsertRowRightOutlined /><br />2층</div>,
-                    <div key='3rd'><SmileOutlined /><br />방2,화1</div>
+                    <div key='1st5'><CheckCircleOutlined /><br />투룸<br /> </div>,
+                    <div key='2ed5'><InsertRowRightOutlined /><br />2층</div>,
+                    <div key='3rd5'><SmileOutlined /><br />방2,화1</div>
                     ]}
                     cover={<div style={{backgroundImage:'url("/img/3/2.png")', height:'150px'}}></div>}
                     >
                         <Card.Meta title='보3억2천  월40만' description='대전 서구 둔산동 갤러리아' />
                     </Card>
                 </SwiperSlide>
-                <SwiperSlide>
+                <SwiperSlide key='quick6'>
                     <Card actions={[
-                    <div key='1st'><CheckCircleOutlined /><br />역세권<br /> </div>,
-                    <div key='2ed'><InsertRowRightOutlined /><br />2층</div>,
-                    <div key='3rd'><SmileOutlined /><br />방1,화1</div>
+                    <div key='1st6'><CheckCircleOutlined /><br />역세권<br /> </div>,
+                    <div key='2ed6'><InsertRowRightOutlined /><br />2층</div>,
+                    <div key='3rd6'><SmileOutlined /><br />방1,화1</div>
                     ]}
                     cover={<div style={{backgroundImage:'url("/img/3/3.png")', height:'150px'}}></div>}
                     >
