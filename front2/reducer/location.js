@@ -263,13 +263,9 @@ export const UpdateEumpmeon = 'UpdateEumpmeon';
 export const UpdateLi = 'UpdateLi';
 export const SetLocations = 'setLocations';
 export const LAND_REQUEST = 'LAND_REQUEST';
-export const Detail = 'Detail';
 
 const locationReducer = (state = initialState, action) => produce(state, (draft => {
     switch(action.type){
-        case Detail :
-            draft.detail = action.data;
-            break;
         case UpdateEumpmeon :
             draft.eumpmeon = action.data.eup;
             draft.eupArray = action.data.more;

@@ -3,6 +3,7 @@ import user from './user';
 import post from './post';
 import location from './location';
 import request from './request';
+import contact from './contact';
 import { HYDRATE } from 'next-redux-wrapper';
 
 
@@ -20,7 +21,8 @@ const rootReducer = combineReducers({
     user,
     post,
     location,
-    request
+    request,
+    contact,
 });
 
 export default rootReducer;

@@ -31,15 +31,21 @@ const AppLayout = ({children}) => {
       }
   },[]);
 
+  const [isClient, setIsClient] = useState(false);
+  useEffect(()=>{
+    setIsClient(true);
+  },[]);
+
 const items = [
   {
-    label: me && <Button onClick={onLogout}>관리자페이지 나가기</Button>,
+    label: me && isClient &&<Button onClick={onLogout}>관리자페이지 나가기</Button>,
     key: 'admin',
   },{
-    label: width &&<div style={{lineHeight:'30px'}}>문의전화 <br />010-456-789</div>,
+    // label: width &&<div style={{lineHeight:'30px'}}>문의전화 <br />010-456-789</div>,
+    label: width && isClient && <div style={{lineHeight:'30px'}}>문의전화 <br />010-456-789</div>,
     key: 'phone',
   },{
-    label: '매물검색',
+    label: <Link href='/landsearch'>매물 검색</Link>,
     key: 'search',
   },{
     label: <Link href='/request'>매물 의뢰</Link>,
@@ -51,7 +57,7 @@ const items = [
     label: <Link href='/intro'>회사소개</Link>,
     key: 'intro',
   },{
-    label: (!width) && <Button style={{borderRadius:'15px'}}>문의전화 010-4567-7890</Button>,
+    label: (!width) && isClient && <Button style={{borderRadius:'15px'}}>문의전화 010-4567-7890</Button>,
     key:'call'
   }
 ];

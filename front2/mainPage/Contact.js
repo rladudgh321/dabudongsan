@@ -1,10 +1,20 @@
-import React from 'react';
+import React, { useCallback } from 'react';
 import { Input } from 'antd';
 import useInput from '../hooks/useInput';
+import { useDispatch } from 'react-redux';
+import { MAINPAGE_MESSAGE_REQUEST } from '@/reducer/contact';
 
 const Contact = () => {
+    const dispatch = useDispatch();
     const [text, onChangeText] = useInput('');
     const [send, onChangeSend] = useInput('');
+    const onSubmit = useCallback(()=>{
+        console.log({text,send});
+        dispatch({
+            type:MAINPAGE_MESSAGE_REQUEST,
+            data:{ mainText: text, mainContact:send }
+        })
+    },[text,send]);
     return (
         <>
             <div style={{ backgroundImage:'url("/img/contact.png")', height:'300px', borderTop:'1px solid purple', backgroundRepeat:'no-repeat', backgroundSize:'cover', backgroundPosition:'center'}}>
@@ -14,7 +24,7 @@ const Contact = () => {
                 </div>
             <div style={{ margin:'10px'}}>
                 <Input.TextArea style={{ width:'50%', marginBottom:'10px' }} placeholder='내용' value={text} onChange={onChangeText} />
-                <Input.Search  style={{ width:'90%' }} enterButton='보내기' placeholder='휴대폰' value={send} onChange={onChangeSend} />
+                <Input.Search  style={{ width:'90%' }} enterButton='보내기' placeholder='휴대폰' value={send} onChange={onChangeSend} onSearch={onSubmit} />
             </div>
             </div>
         </>
