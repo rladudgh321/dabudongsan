@@ -1,9 +1,16 @@
 import React, { useState, useCallback } from 'react';
-import { ConfigProvider, Button } from 'antd';
+import { useDispatch } from 'react-redux';
+import {  Button } from 'antd';
+import { BuyType } from '@/reducer/request';
 const LandType = () => {
+    const dispatch = useDispatch();
     const [selectedButton, setSelectedButton] = useState(null);
     const handleButtonClick = useCallback((buttonName) => {
         setSelectedButton(buttonName); // 현재 선택한 버튼으로 업데이트
+        dispatch({
+            type: BuyType,
+            data: buttonName,
+        });
         console.log(buttonName);
     },[selectedButton]);
     return (

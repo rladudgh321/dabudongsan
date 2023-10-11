@@ -6,6 +6,8 @@ import BuyType from '@/requestPage/BuyType';
 import PriceHope from '@/requestPage/PriceHope';
 import LandType from '@/requestPage/LandType';
 import InfoRequest from '@/requestPage/InfoRequest'
+
+
 const request = () => {
     const [selectedButton, setSelectedButton] = useState(null);
     const handleButtonClick = useCallback((buttonName) => {
@@ -20,12 +22,12 @@ const request = () => {
                     header={<>
                     <Button.Group>
                     <Button
-                        type={selectedButton === '아파트' ? 'primary' : 'default'}
-                        onClick={() => handleButtonClick('아파트')} key='apart'>아파트
+                        type={selectedButton === '구해요' ? 'primary' : 'default'}
+                        onClick={() => handleButtonClick('구해요')} key='apart'>구해요
                     </Button>
                     <Button
-                        type={selectedButton === '신축빌라' ? 'primary' : 'default'}
-                        onClick={() => handleButtonClick('신축빌라')} key='villa'>신축빌라
+                        type={selectedButton === '팔아요' ? 'primary' : 'default'}
+                        onClick={() => handleButtonClick('팔아요')} key='villa'>팔아요
                     </Button>
                     </Button.Group>
                     </>}

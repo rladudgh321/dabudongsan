@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useCallback } from 'react';
 import { Input, Button, Checkbox, List } from 'antd';
 import useInput from '@/hooks/useInput';
 
@@ -6,6 +6,12 @@ const InfoRequest = () => {
     const [name, onName] = useInput('');
     const [title, onTitle] = useInput('');
     const [contact, onContact] = useInput('');
+    const [term, setTerm] = useState(false);
+    const [termError, setTermError] = useState(false);
+    const onChangeTerm = useCallback((e)=>{
+        setTerm(e.target.checked);
+        setTermError(false);
+    },[term]);
     return (
         <>
                 <List.Item style={{ borderBlockEnd:'none' }}>
@@ -56,7 +62,8 @@ const InfoRequest = () => {
                         </div>
                     </List.Item>
                     <List.Item style={{borderBlockEnd : 'none'}} >
-                        <Checkbox style={{margin:'0 auto'}}>동의합니다</Checkbox>
+                        <Checkbox style={{margin:'0 auto'}} checked={term} onChange={onChangeTerm} >동의합니다</Checkbox>
+                        { termError && <div style={{color:'red'}}>동의하셔야 진행하실 수 있습니다</div> }
                     </List.Item>
                     <List.Item style={{borderBlockEnd : 'none'}}>
                         <Button style={{margin:'0 auto', width:'40vw', background:'#ddd'}}>저장</Button>

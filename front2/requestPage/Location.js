@@ -1,8 +1,7 @@
 import React, { useState, useCallback } from 'react';
 import { Button, Dropdown, Input, Form } from 'antd';
 import { useSelector, useDispatch } from 'react-redux';
-import { UpdateEumpmeon, UpdateLi, SetLocations, LAND_REQUEST } from '@/reducer/location';
-import useInput from '@/hooks/useInput';
+import { UpdateEumpmeon, UpdateLi, SetLocations, LAND_REQUEST, Detail } from '@/reducer/location';
 
 const Location = () => {
     const dispatch = useDispatch();
@@ -35,17 +34,25 @@ const Location = () => {
             type:SetLocations
         })
       },[]);
-      const [address, onChangeAddress] = useInput('')
-      const onSubmit = useCallback(()=>{
-        if(eumpmeon === '읍/면' || li === '리' || !address) {
-            return alert('항목을 입력해주세요')
-        }
-        console.log(`${eumpmeon} ${li} ${address}`);
+      const [address, setAddress] = useState('');
+      const onChangeAddress = useCallback((e)=>{
+        setAddress(e.target.value);
         dispatch({
-            type: LAND_REQUEST,
-            data: `${eumpmeon} ${li} ${address}`
+            type: Detail,
+            data: address,
         })
-      },[eumpmeon, li, address]);
+      },[address]);
+    //   const [address, onChangeAddress] = useInput('')
+    //   const onSubmit = useCallback(()=>{
+    //     if(eumpmeon === '읍/면' || li === '리' || !address) {
+    //         return alert('항목을 입력해주세요')
+    //     }
+    //     console.log(`${eumpmeon} ${li} ${address}`);
+    //     dispatch({
+    //         type: LAND_REQUEST,
+    //         data: `${eumpmeon} ${li} ${address}`
+    //     })
+    //   },[eumpmeon, li, address]);
     return (
         <>
             <div style={{ width: '15vw'}}>위치</div>
@@ -72,9 +79,7 @@ const Location = () => {
                     </Dropdown.Button>}
                 </div>
                 <div>
-                    <Form onFinish={onSubmit}>
-                        <Input value={address} onChange={onChangeAddress} placeholder='상세주소' />
-                    </Form>
+                    <Input value={address} onChange={onChangeAddress} placeholder='상세주소' />
                 </div>
             </div>
 

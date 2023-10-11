@@ -2,7 +2,10 @@ import { combineReducers } from 'redux';
 import user from './user';
 import post from './post';
 import location from './location';
+import request from './request';
 import { HYDRATE } from 'next-redux-wrapper';
+
+
 
 const rootReducer = combineReducers({
     index:(state={},action) =>{
@@ -17,6 +20,7 @@ const rootReducer = combineReducers({
     user,
     post,
     location,
+    request
 });
 
 export default rootReducer;
