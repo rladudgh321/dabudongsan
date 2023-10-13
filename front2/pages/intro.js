@@ -1,9 +1,13 @@
 import AppLayout from '@/components/AppLayout';
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { Card } from 'antd';
 import Map from '../components/Map';
 
 const intro = () => {
+    const [isClient, setIsClient] = useState(false);
+    useEffect(() => {
+        setIsClient(true)
+    }, [])
     return(
         <>
             <AppLayout>
@@ -13,6 +17,7 @@ const intro = () => {
                         <div>
                             <h3>위치</h3>
                             <div style={{display:'flex'}}>
+                                {/* { isClient && <Map /> } */}
                                 <Map />
                                 <div>
                                     <div>다부동 1동 1234</div>
