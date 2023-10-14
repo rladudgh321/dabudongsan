@@ -19,3 +19,10 @@
 :where(.css-dev-only-do-not-override-pr0fja).ant-list-bordered .ant-list-header, :where(.css-dev-only-do-not-override-pr0fja).ant-list-bordered .ant-list-footer, :where(.css-dev-only-do-not-override-pr0fja).ant-list-bordered .ant-list-item{
     padding-bottom: 0;
 }
+
+.img {
+    width: 100%;
+    height: 100%;
+    position: relative !important;
+    object-fit: cover;
+}

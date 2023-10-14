@@ -4,26 +4,26 @@ import AppLayout from '@/components/AppLayout';
 import { useDispatch, useSelector } from 'react-redux';
 import { LOG_IN_REQUEST } from '@/reducer/user';
 
-const admins = () => {
+const Admins = () => {
     const dispatch = useDispatch();
     const [infoError, setInfoError] = useState(false);
     const [ids, setterIds] = useState('');
     const onChangeIds = useCallback((e)=>{
         setterIds(e.target.value);
         setInfoError(false);
-    },[ids]);
+    },[]);
     const [password, setterPassword] = useState('');
     const onChangePassword = useCallback((e)=>{
         setterPassword(e.target.value);
         setInfoError(false);
-    },[password]);
+    },[]);
 
     const [termError, setTermError] = useState(false);
     const [term, setTerm] = useState(false);
     const onChangeTerm = useCallback((e)=>{
         setTerm(e.target.checked);
         setTermError(false);
-    },[term]);
+    },[]);
     const { me } = useSelector((state) => state.user);
     const onSubmit = useCallback(()=>{
         if(!term) {
@@ -36,7 +36,7 @@ const admins = () => {
             type:LOG_IN_REQUEST,
             data:{ ids, password }
         })
-    },[ids, password, term]);
+    },[ids, password, term, dispatch]);
     return (
         <>
             <AppLayout>
@@ -73,4 +73,4 @@ const admins = () => {
     );
 }
 
-export default admins;
+export default Admins;

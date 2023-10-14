@@ -2,7 +2,7 @@ import AppLayout from '@/components/AppLayout';
 import React from 'react';
 import IfToolbar from '@/landSearch/IfToolbar';
 
-const landSearch = () => {
+const LandSearch = () => {
     return (
         <>
             <AppLayout>
@@ -12,7 +12,7 @@ const landSearch = () => {
     );
 }
 
-export default landSearch;
+export default LandSearch;
 
 /*
 <조건 툴바>

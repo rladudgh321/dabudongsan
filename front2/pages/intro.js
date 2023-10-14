@@ -2,8 +2,9 @@ import AppLayout from '@/components/AppLayout';
 import React, { useState, useEffect } from 'react';
 import { Card } from 'antd';
 import Map from '../components/Map';
+import Image from 'next/image';
 
-const intro = () => {
+const Intro = () => {
     const [isClient, setIsClient] = useState(false);
     useEffect(() => {
         setIsClient(true)
@@ -13,7 +14,7 @@ const intro = () => {
             <AppLayout>
                 <div style={{marginTop:'30px'}}>
                     <div style={{margin:'0 100px 0 100px', backgroundColor:'green', color:'white', height:'30px'}}>회사소개</div>
-                    <Card cover={<img src='/img/intro.png' />} style={{ border:'1px solid green', margin:'0 100px 100px 100px', padding:'10px' }}>
+                    <Card cover={<Image className='img' src='/img/intro.png' fill alt='intro_picture' />} style={{ border:'1px solid green', margin:'0 100px 100px 100px', padding:'10px' }}>
                         <div>
                             <h3>위치</h3>
                             <div style={{display:'flex'}}>
@@ -35,4 +36,4 @@ const intro = () => {
     );
 }
 
-export default intro;
+export default Intro;

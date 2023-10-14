@@ -4,7 +4,7 @@ import { List } from 'antd';
 import { useSelector } from 'react-redux';
 import { Space, Table, Tag } from 'antd';
 
-const note = () => {
+const Note = () => {
     const { notePost } = useSelector((state) => state.post);
     const columns = [
         {
@@ -69,4 +69,4 @@ const note = () => {
     );
 }
 
-export default note;
+export default Note;

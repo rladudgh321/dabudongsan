@@ -10,9 +10,13 @@ import RecentlyLand from '@/mainPage/RecentlyLand';
 import Contact from '@/mainPage/Contact';
 import Institue from '@/mainPage/Institue';
 
+import { PortfolioProvider } from "../context/context";
+import { prefix } from "../config/config";
+
 const Home = () => {
   return (
     <>
+    <PortfolioProvider value={ { prefix } }>
       <AppLayout>
         <MainPicture />
         <SearchMapList />
@@ -24,6 +28,7 @@ const Home = () => {
         <Contact />
         <Institue />
       </AppLayout>
+      </PortfolioProvider>
     </>
   );
 }

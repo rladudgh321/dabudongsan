@@ -5,9 +5,10 @@ import { useSelector, useDispatch } from 'react-redux';
 import { UpdateEumpmeon, UpdateLi, SetLocations, LAND_REQUEST, Detail } from '@/reducer/location';
 import useInput from '@/hooks/useInput';
 import { REQUEST_REQUEST } from '@/reducer/request';
+import PortfolioContext from '@/context/context';
 
-
-const request = () => {
+const Request = () => {
+    // const { prefix } = useContext(PortfolioContext);
     const dispatch = useDispatch();
     const [selectedButton, setSelectedButton] = useState(null);
     const handleButtonClick = useCallback((buttonName) => {
@@ -18,7 +19,7 @@ const request = () => {
     const handleBuyTypeButtonClick = useCallback((buyTypeButtonName) => {
         setSelectedBuyTypeButton(buyTypeButtonName); // 현재 선택한 버튼으로 업데이트
         console.log(buyTypeButtonName);
-    },[selectedBuyTypeButton]);
+    },[]);
 
     //location
     const { chilgok, eumpmeon, eupArray, li } = useSelector((state) => state.location);
@@ -34,7 +35,7 @@ const request = () => {
                 })
             }
         });
-      },[eumpmeon]);
+      },[eumpmeon, chilgok, dispatch]);
       const onVmoreClick = useCallback((e)=>{
         eupArray.map((v) => {
             if(v.key === parseInt(e.key, 10)){
@@ -44,12 +45,12 @@ const request = () => {
                 })
             }
         });
-      },[eupArray, li]);
+      },[eupArray, dispatch]);
       const setLocation = useCallback(()=>{
         return dispatch({
             type:SetLocations
         })
-      },[]);
+      },[dispatch]);
       const [address, onChangeAddress] = useInput('');
 
       //PriceHope
@@ -60,7 +61,7 @@ const request = () => {
     const handleLandTypeButtonClick = useCallback((landTypeButtonNumber) => {
         setSelectedLandTypeButton(landTypeButtonNumber); // 현재 선택한 버튼으로 업데이트
         console.log(landTypeButtonNumber)
-    },[selectedLandTypeButton]);
+    },[]);
 
     //info
     const [name, onName] = useInput('');
@@ -72,7 +73,7 @@ const request = () => {
     const onChangeTerm = useCallback((e)=>{
         setTerm(e.target.checked);
         setTermError(false);
-    },[term]);
+    },[]);
       const onSubmit = useCallback(()=>{
         if(eumpmeon === '읍/면' || li === '리' || !address) {
             return alert('항목을 입력해주세요')
@@ -94,7 +95,7 @@ const request = () => {
             type: REQUEST_REQUEST,
             data: { selectedButton, selectedBuyTypeButton, eumpmeon, li, address, price, selectedLandTypeButton, name, title, contact, textDetail }
         })
-      },[selectedButton, selectedBuyTypeButton, eumpmeon, li, address, price, selectedLandTypeButton, name, title, contact, textDetail, term]);
+      },[dispatch,selectedButton, selectedBuyTypeButton, eumpmeon, li, address, price, selectedLandTypeButton, name, title, contact, textDetail, term]);
 
     return (
         <>
@@ -258,4 +259,4 @@ const request = () => {
     );
 }
 
-export default request;
+export default Request;

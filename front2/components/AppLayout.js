@@ -5,6 +5,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import { LOG_OUT_REQUEST } from '@/reducer/user';
 import Link from 'next/link';
 import Footer from '@/mainPage/Footer';
+import Image from 'next/image';
 
 const AppLayout = ({children}) => {
   const dispatch = useDispatch();
@@ -17,7 +18,7 @@ const AppLayout = ({children}) => {
       dispatch({
         type:LOG_OUT_REQUEST
       })
-    },[]);
+    },[dispatch]);
     const [width, setWidth] = useState(()=>{
       return globalThis.innerWidth <768;
   });
@@ -67,7 +68,7 @@ const items = [
                 <Col xs={6}>
                     <div style={{width: '100%', height: '100%', position: 'relative'}}>
                         <Link href='/'>
-                          <img src='/img/logo.png' alt='logo' />
+                          <Image className='img' src='/img/logo.png' alt='logo' fill />
                         </Link>
                     </div>
                 </Col>
