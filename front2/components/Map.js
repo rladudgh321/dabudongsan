@@ -24,14 +24,14 @@ const KakaoMap = () => {
   }, []);
 
   const onHref = useCallback(()=>{
-    onload.href = 'https://map.kakao.com/link/map/동천동용광로,35.934633, 128.556799';
+    window.location.href = 'https://map.kakao.com/link/map/동천동용광로,35.934633, 128.556799';
   },[]);
 
 
   
   return (
     <div>
-      <div onClick={onHref} id="map" style={{ width: '500px', height: '400px' }}>
+      <div onClick={onHref} id="map" style={{ minWidth: '150px', minHeight: '120px', width:'50vw', height:'40vh' }}>
       </div>
     </div>
   );

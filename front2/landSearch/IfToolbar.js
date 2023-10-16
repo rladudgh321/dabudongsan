@@ -11,7 +11,7 @@ import {ReloadOutlined, CompassOutlined, UnorderedListOutlined} from '@ant-desig
 const IfToolbar = () => {
     return (
         <>
-            <Row style={{ background:'#ddd', height:'120px', padding:'10px' }}>
+            <Row style={{ background:'#ddd', height:'120px', padding:'10px', alignItems:'center' }}>
                 <Col md={20}>
                     <Input.Search enterButton style={{minWidth:'200px',width:'20vw'}} placeholder='관심지역 입력' />
                     <LandType />
@@ -48,5 +48,7 @@ restroom
 size
 reset
 
+
+640 크기 미만이면 overflow 
 
 */
