@@ -45,7 +45,7 @@ const KakaoMap = () => {
   
   return (
     <div style={{  }}>
-      <div id="map" style={{ minWidth: '150px', minHeight: '120px', width:'66vw', height:'76vh'}}>
+      <div id="map" style={{ minWidth: '150px', minHeight: '120px', width:'66vw', height:'80vh'}}>
         <Button.Group style={{float:'right', zIndex:'100'}}>
           <Button onClick={onClickMap}>지도</Button>
           <Button onClick={onClickWe}>스카이뷰</Button>

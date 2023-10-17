@@ -20,7 +20,11 @@
     padding-bottom: 0;
 }
 
-:where(.css-dev-only-do-not-override-dzlly1).ant-card .ant-card-actions{
-    position:relative;
-    top: 52px;
+:where(.css-dev-only-do-not-override-dzlly1).ant-list-bordered.ant-list-sm .ant-list-item, :where(.css-dev-only-do-not-override-dzlly1).ant-list-bordered.ant-list-sm .ant-list-header, :where(.css-dev-only-do-not-override-dzlly1).ant-list-bordered.ant-list-sm .ant-list-footer{
+    padding:3px 6px;
+}
+
+:where(.css-dev-only-do-not-override-eo35c1).ant-card .ant-card-actions {
+    position: relative;
+    top:19px;
 }

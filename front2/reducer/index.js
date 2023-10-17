@@ -4,6 +4,7 @@ import post from './post';
 import location from './location';
 import request from './request';
 import contact from './contact';
+import land from './land';
 import { HYDRATE } from 'next-redux-wrapper';
 
 
@@ -23,6 +24,7 @@ const rootReducer = combineReducers({
     location,
     request,
     contact,
+    land,
 });
 
 export default rootReducer;

@@ -16,13 +16,13 @@ const landSearch = () => {
                         <MapLand />
                     </Col>
                     <Col md={8} >
-                        <div style={{ width: '100%' }}>
-                            <Button.Group style={{ width: '100%', display: 'flex' }}>
-                                <Button style={{ flex:'1' }}>최신순</Button>
-                                <Button style={{ flex:'1' }}>인기순</Button>
-                                <Button style={{ flex:'1' }}>추천순</Button>
-                                <Button style={{ flex:'1' }}>금액순</Button>
-                                <Button style={{ flex:'1' }}>면적순</Button>
+                        <div style={{ width:'34vw' }}>
+                            <Button.Group style={{ }}>
+                                <Button style={{  }}>최신순</Button>
+                                <Button style={{  }}>인기순</Button>
+                                <Button style={{  }}>추천순</Button>
+                                <Button style={{  }}>금액순</Button>
+                                <Button style={{  }}>면적순</Button>
                             </Button.Group>
                         </div>
                             <Infinite />

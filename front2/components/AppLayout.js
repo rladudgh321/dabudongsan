@@ -61,6 +61,17 @@ const items = [
     key:'call'
   }
 ];
+  const [isVisible, setIsVisible] = useState(true);
+
+  useEffect(() => {
+    // Check if the current URL matches a specific condition
+    if (window.location.href === 'http://127.0.0.1:3000/landsearch') {
+      setIsVisible(false);
+    } else {
+      setIsVisible(true);
+    }
+  }, []);
+
     return (
         <>
             <Row style={{ minHeight:'50px', height:'5vh' }}>
@@ -98,7 +109,7 @@ const items = [
                 </Col>
             </Row>
             {children}
-            <Footer />
+            { isVisible ? <Footer /> : null }
         </>
     );
 }
