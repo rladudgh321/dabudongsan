@@ -4,9 +4,10 @@ import React from 'react';
 import IfToolbar from '@/landSearch/IfToolbar';
 import Infinite from '@/components/Infinite';
 import { Row, Col, Button, ConfigProvider } from 'antd';
-
+import { useSelector } from 'react-redux';
 
 const landSearch = () => {
+    const { landFunc } = useSelector((state) => state.land);
     return (
         <>
             <AppLayout>
@@ -34,7 +35,7 @@ const landSearch = () => {
                                             </Button.Group>
                                 </ConfigProvider>
                         </div>
-                            <Infinite />
+                            { landFunc.map((v) => ( <Infinite landFunc={v} key={v.id} /> ) ) }
                     </Col>
                 </Row>
             </AppLayout>
