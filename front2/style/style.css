@@ -36,3 +36,7 @@
 :where(.css-dev-only-do-not-override-2jjq6l).ant-list-bordered.ant-list-sm .ant-list-item, :where(.css-dev-only-do-not-override-2jjq6l).ant-list-bordered.ant-list-sm .ant-list-header, :where(.css-dev-only-do-not-override-2jjq6l).ant-list-bordered.ant-list-sm .ant-list-footer{
     padding: 8px 3px 0;
 }
+
+:where(.css-dev-only-do-not-override-2jjq6l).ant-list *{
+    display:block;
+}

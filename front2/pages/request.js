@@ -2,10 +2,9 @@ import React, { useState, useCallback, useEffect } from 'react';
 import { List, Space, Button, Dropdown, Input, Checkbox, Form } from 'antd';
 import AppLayout from '@/components/AppLayout';
 import { useSelector, useDispatch } from 'react-redux';
-import { UpdateEumpmeon, UpdateLi, SetLocations, LAND_REQUEST, Detail } from '@/reducer/location';
 import useInput from '@/hooks/useInput';
 import { REQUEST_REQUEST } from '@/reducer/request';
-
+import Location from '@/request/Location';
 
 const request = () => {
     const dispatch = useDispatch();
@@ -21,36 +20,9 @@ const request = () => {
     },[selectedBuyTypeButton]);
 
     //location
-    const { chilgok, eumpmeon, eupArray, li } = useSelector((state) => state.location);
-    const [ showMore, setShowMore ] = useState(false);
-    const onMenuClick = useCallback((e) => {
-        chilgok.map((v) => {
-            if(v.key === parseInt(e.key, 10)){
-                setShowMore(true);
-                console.log('click', e, v.label, eumpmeon);
-                return dispatch({
-                    type: UpdateEumpmeon,
-                    data: { eup: v.label, more:v.more },
-                })
-            }
-        });
-      },[eumpmeon]);
-      const onVmoreClick = useCallback((e)=>{
-        eupArray.map((v) => {
-            if(v.key === parseInt(e.key, 10)){
-                return dispatch({
-                    type: UpdateLi,
-                    data: v.label,
-                })
-            }
-        });
-      },[eupArray, li]);
-      const setLocation = useCallback(()=>{
-        return dispatch({
-            type:SetLocations
-        })
-      },[]);
-      const [address, onChangeAddress] = useInput('');
+    const [ eumpmeon, setEumpmeon ] = useState(null);
+    const [ lia, setLia ] = useState(null);
+    const [ address, setAddress ] = useState(null);
 
       //PriceHope
     const [price, onChangePrice] = useInput('');
@@ -74,7 +46,7 @@ const request = () => {
         setTermError(false);
     },[term]);
       const onSubmit = useCallback(()=>{
-        if(eumpmeon === '읍/면' || li === '리' || !address) {
+        if(eumpmeon === '읍/면' || lia === '리' || !address) {
             return alert('항목을 입력해주세요')
         }
         if(!term) {
@@ -89,12 +61,12 @@ const request = () => {
         //     data: `${eumpmeon} ${li} ${address}`
         // });
         //구해요 팔아요
-        console.log({selectedButton, selectedBuyTypeButton, eumpmeon, li, address, price, selectedLandTypeButton, name, title, contact, textDetail, term })
+        console.log({selectedButton, selectedBuyTypeButton, eumpmeon, lia, address, price, selectedLandTypeButton, name, title, contact, textDetail, term })
         dispatch({
             type: REQUEST_REQUEST,
-            data: { selectedButton, selectedBuyTypeButton, eumpmeon, li, address, price, selectedLandTypeButton, name, title, contact, textDetail }
+            data: { selectedButton, selectedBuyTypeButton, eumpmeon, lia, address, price, selectedLandTypeButton, name, title, contact, textDetail }
         })
-      },[selectedButton, selectedBuyTypeButton, eumpmeon, li, address, price, selectedLandTypeButton, name, title, contact, textDetail, term]);
+      },[selectedButton, selectedBuyTypeButton, eumpmeon, lia, address, price, selectedLandTypeButton, name, title, contact, textDetail, term]);
 
     return (
         <>
@@ -138,35 +110,11 @@ const request = () => {
                                 >월세</Button>
                             </Button.Group>
                         </List.Item>
+
                         <List.Item style={{ justifyContent:'normal' }}>
-                            <div style={{ width: '15vw'}}>위치</div>
-                            <div style={{ display:'flex' }}>
-                                <div><Button onClick={setLocation}>경북 칠곡군</Button></div>
-                                <div>
-                                    <Dropdown.Button
-                                        menu={{
-                                            items:chilgok,
-                                            onClick: onMenuClick,
-                                        }}
-                                        >
-                                        <span>{eumpmeon}</span>
-                                    </Dropdown.Button>
-                                </div>
-                                <div>
-                                    { showMore && <Dropdown.Button
-                                        menu={{
-                                            items:eupArray,
-                                            onClick: onVmoreClick,
-                                        }}
-                                        >
-                                        <span>{li}</span>
-                                    </Dropdown.Button>}
-                                </div>
-                                <div>
-                                    <Input value={address} onChange={onChangeAddress} placeholder='상세주소' />
-                                </div>
-                            </div>
+                            <Location setEumpmeon={setEumpmeon} setLia={setLia} setAddress={setAddress} />
                         </List.Item>
+
                         <List.Item style={{ justifyContent:'normal' }}>
                             <div style={{ width: '15vw'}}>희망금액</div>
                             <div>

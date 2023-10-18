@@ -1,8 +1,9 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Button, Dropdown, Space, message } from 'antd';
 import { DownOutlined } from '@ant-design/icons';
 
-const Room = () => {
+const Room = ({setRoom}) => {
+  const [ rom, setRom ] = useState(0);
     const items = [
         {
           label: '방',
@@ -34,8 +35,10 @@ const Room = () => {
         },
       ];
     const handleMenuClick = (e) => {
-        message.info('Click on menu item.');
-        console.log('click', e);
+        // message.info('Click on menu item.');
+        setRom(e.key);
+        console.log(e.key);
+        setRoom('방 ' + e.key + '개');
     };
     const menuProps = {
         items,
@@ -45,8 +48,8 @@ const Room = () => {
         <>
             <Dropdown menu={menuProps}>
                 <Button>
-                    <Space>
-                    방
+                    <Space style={{ display:'flex' }}>
+                    <div>{'방 ' + rom + '개'}</div>
                     <DownOutlined />
                     </Space>
                 </Button>
