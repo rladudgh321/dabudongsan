@@ -1,13 +1,21 @@
 import AppLayout from '@/components/AppLayout';
 import MapLand from '@/components/MapLand';
-import React from 'react';
+import React, { useCallback } from 'react';
 import IfToolbar from '@/landSearch/IfToolbar';
 import Infinite from '@/components/Infinite';
-import { Row, Col, Button, ConfigProvider } from 'antd';
-import { useSelector } from 'react-redux';
+import { Row, Col, Button, ConfigProvider, List } from 'antd';
+import { useSelector, useDispatch } from 'react-redux';
+import { CloudUploadOutlined } from '@ant-design/icons';
+import { ADD_LAND_REQUEST } from '@/reducer/land';
 
 const landSearch = () => {
+    const dispatch = useDispatch();
     const { landFunc } = useSelector((state) => state.land);
+    const onUploadData = useCallback(()=>{
+        dispatch({
+            type:ADD_LAND_REQUEST,
+        })
+    },[]);
     return (
         <>
             <AppLayout>
@@ -35,7 +43,37 @@ const landSearch = () => {
                                             </Button.Group>
                                 </ConfigProvider>
                         </div>
-                            { landFunc.map((v) => ( <Infinite landFunc={v} key={v.id} /> ) ) }
+                        <div style={{ height:'76vh', overflowX:'hidden', overflowY:'auto' }}>
+                            <ConfigProvider
+                            theme={{
+                                components: {
+                                Card: {
+                                    actionsLiMargin:'1px'
+                                },
+                                List: {
+                                    paddingContentHorizontal:3,
+                                    paddingContentVertical:9
+                                }
+                                },
+                            }}
+                            >
+
+                                <List
+                                    itemLayout="vertical"
+                                    size="small"
+                                    bordered
+                                >
+                                    <List.Item style={{ textAlign:'center' }}>
+                                        <div style={{ height:'15vh', cursor:'pointer' }} onClick={onUploadData}>
+                                            <CloudUploadOutlined style={{ fontSize:'2rem', color:'skyblue' }} />
+                                            <br />
+                                            매물 업로드
+                                        </div>
+                                    </List.Item>
+                                    { landFunc.map((v) => ( <Infinite landFunc={v} key={v.id} /> ) ) }
+                                </List>
+                            </ConfigProvider>      
+                        </div>
                     </Col>
                 </Row>
             </AppLayout>

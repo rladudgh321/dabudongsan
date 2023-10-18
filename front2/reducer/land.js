@@ -18,6 +18,13 @@ const initialState = {
         title: '전세 10억 보증금 5억',
         address: '대전 동구 가양동 323-21',
         description:'전/월세 가능한 초호화 빌라 곧 역세권, 재개발부지'
+    },{
+        id:3,
+        image:{src:'/img/1/office.png'},
+        options:{ landType:'빌라', floor:'50층', room:'방10, 화4' },
+        title: '전세 10억 보증금 5억',
+        address: '대전 동구 가양동 323-21',
+        description:'전/월세 가능한 초호화 빌라 곧 역세권, 재개발부지'
     }]
 }
 

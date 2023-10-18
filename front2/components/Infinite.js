@@ -26,26 +26,6 @@ const Infinite = ({ landFunc }) => {
 
     return (
         <>
-    <div style={{ height:'76vh', overflowX:'hidden', overflowY:'auto' }}>
-    <ConfigProvider
-    theme={{
-        components: {
-        Card: {
-            actionsLiMargin:'1px'
-        },
-        List: {
-            paddingContentHorizontal:3,
-            paddingContentVertical:9
-        }
-        },
-    }}
-    >
-
-    <List
-        itemLayout="vertical"
-        size="small"
-        bordered
-    >
             <List.Item>
                 <div style={{display:'flex'}}>
                     <Image alt='grim' width={120} height={90} src={landFunc.image.src} style={{ borderRadius:'30px', flex:'1' }} />
@@ -71,9 +51,7 @@ const Infinite = ({ landFunc }) => {
                     </Card>
                 </div>
             </List.Item>
-    </List>
-    </ConfigProvider>      
-    </div>
+    
         </>
     );
 }
