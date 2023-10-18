@@ -1,5 +1,5 @@
 import React from 'react';
-import { Input, Row, Col, Button, Dropdown, Space, message } from 'antd';
+import { Input, Row, Col, Button, Dropdown, Space, message, ConfigProvider } from 'antd';
 import LandType from './LandType';
 import BuyType from './BuyType';
 import Theme from './Theme';
@@ -26,10 +26,18 @@ const IfToolbar = () => {
                     </Button>
                 </Col>
                 <Col md={4}>
-                    <Button.Group>
-                        <Button><CompassOutlined /> 지도</Button>
-                        <Button><UnorderedListOutlined /> 목록</Button>
-                    </Button.Group>
+                    <ConfigProvider
+                    theme={{
+                        token: {
+                            paddingContentHorizontal:6
+                        },
+                    }}
+                    >
+                        <Button.Group>
+                            <Button><CompassOutlined /> 지도</Button>
+                            <Button><UnorderedListOutlined /> 목록</Button>
+                        </Button.Group>
+                    </ConfigProvider>
                 </Col>
             </Row>
         </>
