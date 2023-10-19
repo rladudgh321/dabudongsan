@@ -40,3 +40,7 @@
 :where(.css-dev-only-do-not-override-2jjq6l).ant-list *{
     display:block;
 }
+/* 
+:where(.css-dev-only-do-not-override-2jjq6l).ant-list *{
+    flex-direction: column;
+} */

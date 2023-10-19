@@ -1,7 +1,6 @@
-import React, { useState, useCallback, useMemo } from 'react';
+import React, { useState, useCallback } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import useInput from '@/hooks/useInput';
-import { Button, Dropdown, Input, Select, Space } from 'antd';
+import { Button, Input, Select, Space } from 'antd';
 import { UpdateEumpmeon, UpdateLi, SetLocations } from '@/reducer/location';
 
 const Location = ({setEumpmeon, setLia, setAddress}) => {
@@ -13,6 +12,7 @@ const Location = ({setEumpmeon, setLia, setAddress}) => {
             if(v.label === e){
                 setShowMore(true);
                 setEumpmeon(v.label);
+                console.log(v.label);
                 return dispatch({
                     type: UpdateEumpmeon,
                     data: { eup: v.label, more:v.more },
