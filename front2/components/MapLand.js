@@ -19,14 +19,21 @@ const KakaoMap = () => {
 		        level: 3, // 지도의 확대 레벨
 		        mapTypeId : onMap ? kakao.maps.MapTypeId.HYBRID : kakao.maps.MapTypeId.ROADMAP // 지도종류
       }; 
+      
+      // 지도를 생성한다 
+      var map = new kakao.maps.Map(mapContainer, mapOption); 
+      
+    // 지도에 마커를 생성하고 표시한다
+		var marker = new kakao.maps.Marker({
+      position: new kakao.maps.LatLng(35.934633, 128.556799), // 마커의 좌표
+      map: map // 마커를 표시할 지도 객체
+  });
 
-		// 지도를 생성한다 
-		var map = new kakao.maps.Map(mapContainer, mapOption); 
 
     // 지도 클릭 이벤트를 등록한다 (좌클릭 : click, 우클릭 : rightclick, 더블클릭 : dblclick)
 		kakao.maps.event.addListener(map, 'click', function (mouseEvent) {
 			// window.location.href = 'https://map.kakao.com/link/map/동천동용광로,35.934633, 128.556799';
-		});	
+		});
       })
     }
   
@@ -58,3 +65,9 @@ const KakaoMap = () => {
 export default KakaoMap;
 //221865f87f3f5b0bb2ac662f197e31e1
 
+/*
+우리나라 위도 경도 정규표현식
+
+3[3456789]\.\d+|4[0123]\.\d+|12[456789]\.\d+13[012]\.\d+
+
+*/
