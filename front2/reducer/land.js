@@ -1,6 +1,9 @@
 import { produce } from "immer";
 import shortid from 'short-id';
 const initialState = {
+    eumpmeon:null,
+    lia:null,
+    address:null,
     addLandLoading:false,
     addLandDone:false,
     addLandError:null,
@@ -63,6 +66,9 @@ const landReducer = (state = initialState, action) => produce(state, (draft => {
         case ADD_LAND_SUCCESS :
             draft.addLandLoading = false;
             draft.addLandDone = true;
+            draft.eumpmeon = action.data.eumpmeon;
+            draft.lia = action.data.lia;
+            draft.address = action.data.address;
             break;
         case ADD_LAND_FAILURE :
             draft.addLandLoading = false;

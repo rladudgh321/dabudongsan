@@ -5,6 +5,7 @@ const initialState = {
     lia:'리',
     eupArray:[],
     eumpmeon:'읍/면',
+    address:null,
     chilgok: [{
         key:1,
         label:'왜관읍',
@@ -342,7 +343,6 @@ const initialState = {
 
 export const UpdateEumpmeon = 'UpdateEumpmeon';
 export const UpdateLi = 'UpdateLi';
-export const SetLocations = 'setLocations';
 export const LAND_REQUEST = 'LAND_REQUEST';
 
 const locationReducer = (state = initialState, action) => produce(state, (draft => {
@@ -353,10 +353,6 @@ const locationReducer = (state = initialState, action) => produce(state, (draft 
             break;
         case UpdateLi :
             draft.lia = action.data;
-            break;
-        case SetLocations :
-            draft.eumpmeon = '읍/면';
-            draft.lia = '리';
             break;
         case LAND_REQUEST :
             draft.land_request = action.data;

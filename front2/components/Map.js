@@ -46,7 +46,7 @@ const KakaoMap = () => {
   
   return (
     <div>
-      <div onClick={onHref} id="map" style={{ minWidth: '150px', minHeight: '120px', width:'50vw', height:'40vh' }}>
+      <div onClick={onHref} id="map" style={{ minWidth: '150px', minHeight: '120px', width:'30vw', height:'40vh' }}>
       </div>
     </div>
   );

@@ -1,6 +1,6 @@
 import React, { useState, useCallback } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { Button, Input, Select, Space } from 'antd';
+import { Button, Input, Select, Space, Row, Col } from 'antd';
 import { UpdateEumpmeon, UpdateLi, SetLocations } from '@/reducer/location';
 
 const Location = ({setEumpmeon, setLia, setAddress}) => {
@@ -32,53 +32,56 @@ const Location = ({setEumpmeon, setLia, setAddress}) => {
             }
         });
     },[eupArray, lia]);
-    const setLocation = useCallback(()=>{
-        return dispatch({
-            type:SetLocations
-        })
-    },[]);
     const [address, setter] = useState('');
     const onChangeAddress = useCallback((e)=>{
         setter(e.target.value);
-        setAddress(address);
+        setAddress(e.target.value);
     },[address]);
 
     
     return (
         <>
                 <div style={{ width: '15vw'}}>위치</div>
-                <div style={{ display:'flex' }}>
-                    <div><Button onClick={setLocation}>경북 칠곡군</Button></div>
-                    <div>
-                    <Space wrap>
-                        <Select
-                        defaultValue="읍/면"
-                        style={{
-                            width: 120,
-                        }}
-                        onChange={handleChange}
-                        options={chilgok}
-                        />
-                    </Space>
+                <Row>
+                    <Col md={24}>
+                        <Button>경북 칠곡군</Button>
+                    </Col>
+                </Row>
+                <Row>
+                    <div style={{ display:'flex' }}>
+                        <Col md={12}>
+                            <Space wrap>
+                                <Select
+                                defaultValue="읍/면"
+                                style={{
+                                    width: 120,
+                                }}
+                                onChange={handleChange}
+                                options={chilgok}
+                                />
+                            </Space>
+                        </Col>
+                        <Col md={12}>
+                                {
+                                    showMore && <Space wrap>
+                                    <Select
+                                    defaultValue="리"
+                                    style={{
+                                        width: 120,
+                                    }}
+                                    onChange={onVmoreClick}
+                                    options={eupArray}
+                                    />
+                                </Space>
+                                }
+                        </Col>
                     </div>
-                    <div>
-                        {
-                            showMore && <Space wrap>
-                            <Select
-                            defaultValue="리"
-                            style={{
-                                width: 120,
-                            }}
-                            onChange={onVmoreClick}
-                            options={eupArray}
-                            />
-                        </Space>
-                        }
-                    </div>
-                    <div>
+                    </Row>
+                    <Row>
+                    <Col md={24}>
                         <Input value={address} onChange={onChangeAddress} placeholder='상세주소' />
-                    </div>
-                </div>
+                    </Col>
+                    </Row>
         </>
     );
 }

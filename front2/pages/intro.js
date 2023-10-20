@@ -2,6 +2,7 @@ import AppLayout from '@/components/AppLayout';
 import React, { useState, useEffect } from 'react';
 import { Card } from 'antd';
 import Map from '../components/Map';
+import { EnvironmentOutlined, ShopOutlined, PhoneOutlined, MobileOutlined, MailOutlined } from '@ant-design/icons';
 
 const intro = () => {
     const [isClient, setIsClient] = useState(false);
@@ -19,12 +20,12 @@ const intro = () => {
                             <div style={{display:'flex'}}>
                                 {/* { isClient && <Map /> } */}
                                 <Map />
-                                <div>
-                                    <div>다부동 1동 1234</div>
-                                    <div>다부 부동산</div>
-                                    <div>070-1244-8212</div>
-                                    <div>010-1234-5678</div>
-                                    <div>dabu@naver.com</div>
+                                <div style={{ margin: '30px' }}>
+                                    <div><EnvironmentOutlined /> 다부동 1동 1234</div>
+                                    <div><ShopOutlined /> 다부 부동산</div>
+                                    <div><PhoneOutlined /> 070-1244-8212</div>
+                                    <div><MobileOutlined /> 010-1234-5678</div>
+                                    <div><MailOutlined /> dabu@naver.com</div>
                                 </div>    
                             </div>
                         </div>
