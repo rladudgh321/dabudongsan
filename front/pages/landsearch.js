@@ -10,13 +10,14 @@ import { ADD_LAND_REQUEST } from '@/reducer/land';
 import Location from '@/request/Location';
 import { CloudUploadOutlined } from '@ant-design/icons';
 import { Button, Col, ConfigProvider, Form, Input, List, Row, Upload } from 'antd';
-import { useCallback, useEffect, useState } from 'react';
+import { useCallback, useEffect, useRef, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
 const LandSearch = () => {
-    //로그인 할때마다 변하는 UI
+    //로그인 할때마다 변하는 UI(업로드)
     const [isLoggedIn, setIsLoggedIn] = useState(true);
 
+    const onRef = useRef();
     const dispatch = useDispatch();
     const { landFunc } = useSelector((state) => state.land);
     const fileList = [{
@@ -51,12 +52,15 @@ const LandSearch = () => {
                 } else {
                     setIsfullSize(true)
                 }
+                onRef.current = window.innerWidth;
             }
+            viewPoint();
+            console.log('useEffect', onRef.current);
             window.addEventListener('resize', viewPoint);
             return () => {
                 window.removeEventListener('resize', viewPoint);
             }
-        },[]);
+        },[onRef]);
     return (
         <>
             <AppLayout>
@@ -69,7 +73,8 @@ const LandSearch = () => {
                 <Row>
                     
                     <Col md={16} xs={24} sm={24}>
-                        <MapLand width={isfullSize ? '100vw' : '66vw'} />
+                        {console.log('############', onRef.current)}
+                        <MapLand width={(isfullSize && onRef.current < 768) ? '100vw' : '66vw'} />
                     </Col>
                     <Col md={8} xs={0} sm={0}>
                         <div style={{ textAlign:'center'}}>
@@ -125,7 +130,7 @@ const LandSearch = () => {
                                                     </div>
                                                 </Upload>
                                             </div>
-                                            <div style={{  }} >
+                                            <div>
                                                 <BuyType setBuyType={setBuyType} />
                                                 <Floor setFloor={setFloor} />
                                                 <Room setRoom={setRoom} />

@@ -1,9 +1,12 @@
 import { Button } from 'antd';
-import { useCallback, useEffect, useState } from 'react';
+import { useCallback, useEffect, useRef, useState } from 'react';
 import { useSelector } from 'react-redux';
 
 const KakaoMap = ({width}) => {
-  console.log('kakaoWidth', width);
+  const onRef = useRef();
+  onRef.current = width;
+  console.log('**************', onRef.current, width)
+  console.log('kakaoWidth', onRef);
   const { eumpmeon, lia, address } = useSelector((state)=>state.land);
   console.log({eumpmeon, lia, address});
   const [onMap, setOnMap] = useState(false);
@@ -98,9 +101,9 @@ const KakaoMap = ({width}) => {
     console.log("traffic", traffic)
     setTraffic((prev) => !prev)
   }, [traffic])
-
+  
   return (
-        <div id="map" style={{ minWidth: '150px', minHeight: '120px', width:width, height:'88vh'}}>
+        <div id="map" style={{ minWidth: '150px', minHeight: '120px', width:onRef.current, height:'88vh'}}>
           <Button.Group style={{float:'right', zIndex:'100'}}>
             <Button onClick={onClickTraffic}>지적도</Button>
             <Button onClick={onClickMap}>지도</Button>
