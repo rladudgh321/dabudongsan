@@ -5,10 +5,7 @@ import { useSelector } from 'react-redux';
 const KakaoMap = ({width}) => {
   const onRef = useRef();
   onRef.current = width;
-  console.log('**************', onRef.current, width)
-  console.log('kakaoWidth', onRef);
   const { eumpmeon, lia, address } = useSelector((state)=>state.land);
-  console.log({eumpmeon, lia, address});
   const [onMap, setOnMap] = useState(false);
   const [traffic, setTraffic] = useState(false);
   useEffect(() => {
@@ -31,7 +28,9 @@ const KakaoMap = ({width}) => {
       var map = new kakao.maps.Map(mapContainer, mapOption);
       
       // 지형도 타일 이미지 추가
-      traffic ? map.addOverlayMapTypeId(kakao.maps.MapTypeId.USE_DISTRICT) : map.removeOverlayMapTypeId(kakao.maps.MapTypeId.USE_DISTRICT)
+      traffic
+      ? map.addOverlayMapTypeId(kakao.maps.MapTypeId.USE_DISTRICT)
+      : map.removeOverlayMapTypeId(kakao.maps.MapTypeId.USE_DISTRICT)
 
       // 주소-좌표 변환 객체를 생성합니다
       var geocoder = new kakao.maps.services.Geocoder();
@@ -89,12 +88,10 @@ const KakaoMap = ({width}) => {
 
   const onClickMap = useCallback(()=>{
     setOnMap(false);
-    console.log(onMap);
   },[onMap]);
 
   const onClickWe = useCallback(()=>{
     setOnMap(true);
-    console.log(onMap);
   },[onMap]);
   
   const onClickTraffic = useCallback(() => {

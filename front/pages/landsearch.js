@@ -6,7 +6,7 @@ import BuyType from '@/landSearch/BuyType';
 import Floor from '@/landSearch/Floor';
 import IfToolbar from '@/landSearch/IfToolbar';
 import Room from '@/landSearch/Room';
-import { ADD_LAND_REQUEST } from '@/reducer/land';
+import { ADD_LAND_REQUEST, UPLOAD_IMAGE_REQUEST } from '@/reducer/land';
 import Location from '@/request/Location';
 import { CloudUploadOutlined } from '@ant-design/icons';
 import { Button, Col, ConfigProvider, Form, Input, List, Row, Upload } from 'antd';
@@ -22,8 +22,9 @@ const LandSearch = () => {
 
     const onRef = useRef();
     const dispatch = useDispatch();
-    const { landFunc } = useSelector((state) => state.land);
+    const { landFunc, imagePath } = useSelector((state) => state.land);
 
+    console.log({imagePath, landFunc});
 
         const [buyType, setBuyType] = useState('');
         const [floor, setFloor] = useState(3);
@@ -46,7 +47,7 @@ const LandSearch = () => {
 
         //upload
         const uploadProps = {
-            action: 'http://127.0.0.1:4000/upload',
+            action: 'http://127.0.0.1:4000/land/upload/image',
             listType: "picture",
             multiple: false,
             accept: "image/*",
@@ -57,14 +58,13 @@ const LandSearch = () => {
                     type: UPLOAD_IMAGE_REQUEST,
                     data: imageFormData
                 })
-                return false;
+                return true;
             }
             
         }
 
         useEffect(() => {
             function viewPoint() {
-                console.log('window.innerWidth', window.innerWidth);
                 if(window.innerWidth >= 768) {
                     setIsfullSize(false)
                 } else {
@@ -73,7 +73,6 @@ const LandSearch = () => {
                 onRef.current = window.innerWidth;
             }
             viewPoint();
-            console.log('useEffect', onRef.current);
             window.addEventListener('resize', viewPoint);
             return () => {
                 window.removeEventListener('resize', viewPoint);
@@ -91,7 +90,6 @@ const LandSearch = () => {
                 <Row>
                     
                     <Col md={16} xs={24} sm={24}>
-                        {console.log('############', onRef.current)}
                         <MapLand width={(isfullSize && onRef.current < 768) ? '100vw' : '66vw'} />
                     </Col>
                     <Col md={8} xs={0} sm={0}>
