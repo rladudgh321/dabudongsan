@@ -59,14 +59,14 @@ export const UPLOAD_IMAGE_FAILURE='UPLOAD_IMAGE_FAILURE';
 */
 export const dummyLand = (data) => ({
     id:shortid.generate(),
-    image:data.image.src, // src: 'waklfjklwfjeweawafeawefawefweaf'
+    image:{src:`http://localhost:4000/${data.filename}`}, // src: 'waklfjklwfjeweawafeawefawefweaf'
     title:data.title,
-    address:data.address,
+    address:`${data.eumpmeon} ${data.lia} ${data.address}`,
     description: data.description,
     options: {
-        landType: data.options.landType,
-        floor: data.options.floor,
-        room:data.options.room
+        landType: data.buyType,
+        floor: data.floor,
+        room:data.room
     }
 });
 
@@ -80,9 +80,10 @@ const landReducer = (state = initialState, action) => produce(state, (draft => {
         case ADD_LAND_SUCCESS :
             draft.addLandLoading = false;
             draft.addLandDone = true;
-            draft.eumpmeon = action.data.eumpmeon;
-            draft.lia = action.data.lia;
-            draft.address = action.data.address;
+            // draft.eumpmeon = action.data.eumpmeon;
+            // draft.lia = action.data.lia;
+            // draft.address = action.data.address;
+            draft.landFunc.unshift(dummyLand(action.data));
             break;
         case ADD_LAND_FAILURE :
             draft.addLandLoading = false;

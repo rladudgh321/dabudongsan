@@ -24,7 +24,6 @@ const LandSearch = () => {
     const dispatch = useDispatch();
     const { landFunc, imagePath } = useSelector((state) => state.land);
 
-    console.log({imagePath, landFunc});
 
         const [buyType, setBuyType] = useState('');
         const [floor, setFloor] = useState(3);
@@ -35,14 +34,13 @@ const LandSearch = () => {
         const [ lia, setLia ] = useState(null);
         const [ address, setAddress ] = useState(null);
         const [isfullSize, setIsfullSize] = useState(false);
-
         const onUploadData = useCallback(()=>{
-            console.log({buyType, floor, room, title, description, eumpmeon, lia, address});
+            console.log({buyType, floor, room, title, description, eumpmeon, lia, address, filename: imagePath});
             dispatch({
                 type:ADD_LAND_REQUEST,
-                data: { buyType, floor, room, title, description, eumpmeon, lia, address }
+                data: { buyType, floor, room, title, description, eumpmeon, lia, address, filename:imagePath }
             })
-        },[buyType, floor, room, title, description, eumpmeon, lia, address, dispatch]);
+        },[buyType, floor, room, title, description, eumpmeon, lia, address, imagePath, dispatch]);
 
 
         //upload

@@ -11,7 +11,7 @@ function addLandAPI(data) {
 }
 
 function* addLand(action) {
-    // yield call(addLandAPI, action.data);
+    // const result = yield call(addLandAPI, action.data);
     try {
         yield delay(1000);
         yield put({
