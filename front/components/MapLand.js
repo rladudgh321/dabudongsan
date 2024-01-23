@@ -122,3 +122,18 @@ export default KakaoMap;
 3[3456789]\.\d+|4[0123]\.\d+|12[456789]\.\d+13[012]\.\d+
 
 */
+
+
+/**
+ *                        useState
+ * 
+ *             useEffect
+ * 
+ *                                       DOM
+ * 
+ */
+
+
+
+
+

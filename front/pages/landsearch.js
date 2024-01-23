@@ -10,6 +10,7 @@ import { ADD_LAND_REQUEST } from '@/reducer/land';
 import Location from '@/request/Location';
 import { CloudUploadOutlined } from '@ant-design/icons';
 import { Button, Col, ConfigProvider, Form, Input, List, Row, Upload } from 'antd';
+import ImgCrop from 'antd-img-crop';
 import { useCallback, useEffect, useRef, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
@@ -17,16 +18,12 @@ const LandSearch = () => {
     //로그인 할때마다 변하는 UI(업로드)
     const [isLoggedIn, setIsLoggedIn] = useState(true);
 
+
+
     const onRef = useRef();
     const dispatch = useDispatch();
     const { landFunc } = useSelector((state) => state.land);
-    const fileList = [{
-      uid: '-1',
-      name: 'yyy.png',
-      status: 'done',
-      url: 'https://zos.alipayobjects.com/rmsportal/jkjgkEfvpUPVyRjUImniVslZfWPnJuuZ.png',
-      thumbUrl: 'https://zos.alipayobjects.com/rmsportal/jkjgkEfvpUPVyRjUImniVslZfWPnJuuZ.png',
-    }];
+
 
         const [buyType, setBuyType] = useState('');
         const [floor, setFloor] = useState(3);
@@ -37,6 +34,7 @@ const LandSearch = () => {
         const [ lia, setLia ] = useState(null);
         const [ address, setAddress ] = useState(null);
         const [isfullSize, setIsfullSize] = useState(false);
+
         const onUploadData = useCallback(()=>{
             console.log({buyType, floor, room, title, description, eumpmeon, lia, address});
             dispatch({
@@ -44,6 +42,26 @@ const LandSearch = () => {
                 data: { buyType, floor, room, title, description, eumpmeon, lia, address }
             })
         },[buyType, floor, room, title, description, eumpmeon, lia, address, dispatch]);
+
+
+        //upload
+        const uploadProps = {
+            action: 'http://127.0.0.1:4000/upload',
+            listType: "picture",
+            multiple: false,
+            accept: "image/*",
+            beforeUpload: (file) => {
+                const imageFormData = new FormData();
+                imageFormData.append('image', file);
+                dispatch({
+                    type: UPLOAD_IMAGE_REQUEST,
+                    data: imageFormData
+                })
+                return false;
+            }
+            
+        }
+
         useEffect(() => {
             function viewPoint() {
                 console.log('window.innerWidth', window.innerWidth);
@@ -117,18 +135,15 @@ const LandSearch = () => {
                                     {isLoggedIn && <List.Item>
                                         <Form onFinish={onUploadData}>
                                             <div style={{ textAlign:'center' }}>
-                                                <Upload
-                                                    action="https://run.mocky.io/v3/435e224c-44fb-4773-9faf-380c5e6a2188"
-                                                    listType="picture"
-                                                    maxCount={1}
-                                                    defaultFileList={[...fileList]}
-                                                    >
+                                            <ImgCrop rotationSlider>
+                                                <Upload.Dragger {...uploadProps}>
                                                     <div style={{ cursor:'pointer', width:'100%', textAlign:'center' }}>
                                                         <CloudUploadOutlined style={{ fontSize:'2rem', color:'skyblue' }} />
                                                         <br />
                                                         매물 업로드
                                                     </div>
-                                                </Upload>
+                                                </Upload.Dragger>
+                                                </ImgCrop>
                                             </div>
                                             <div>
                                                 <BuyType setBuyType={setBuyType} />
@@ -163,9 +178,3 @@ const LandSearch = () => {
 }
 
 export default LandSearch;
-
-/*
-<조건 툴바>
-<지도>
-<정보메뉴>
-*/
