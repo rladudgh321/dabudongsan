@@ -26,7 +26,7 @@ const Intro = () => {
                                     <div><PhoneOutlined /> 070-1244-8212</div>
                                     <div><MobileOutlined /> 010-1234-5678</div>
                                     <div><MailOutlined /> dabu@naver.com</div>
-                                </div>    
+                                </div>
                             </div>
                         </div>
                     </Card>

@@ -6,6 +6,7 @@ import BuyType from '@/landSearch/BuyType';
 import Floor from '@/landSearch/Floor';
 import IfToolbar from '@/landSearch/IfToolbar';
 import Room from '@/landSearch/Room';
+import Toilet from '@/landSearch/Toilet';
 import { ADD_LAND_REQUEST, UPLOAD_IMAGE_REQUEST } from '@/reducer/land';
 import Location from '@/request/Location';
 import { CloudUploadOutlined } from '@ant-design/icons';
@@ -22,12 +23,13 @@ const LandSearch = () => {
 
     const onRef = useRef();
     const dispatch = useDispatch();
-    const { landFunc, imagePath } = useSelector((state) => state.land);
+    const { landFunc, imagePath, uploadImageDone } = useSelector((state) => state.land);
 
 
         const [buyType, setBuyType] = useState('');
         const [floor, setFloor] = useState(3);
         const [room, setRoom] = useState(0);
+        const [toilet, setToilet] = useState(0);
         const [title, setTitle] = useInput('');
         const [description, setDescription] = useInput('');
         const [ eumpmeon, setEumpmeon ] = useState(null);
@@ -35,12 +37,12 @@ const LandSearch = () => {
         const [ address, setAddress ] = useState(null);
         const [isfullSize, setIsfullSize] = useState(false);
         const onUploadData = useCallback(()=>{
-            console.log({buyType, floor, room, title, description, eumpmeon, lia, address, filename: imagePath});
+            console.log({buyType, floor, room, toilet, title, description, eumpmeon, lia, address, filename: imagePath});
             dispatch({
                 type:ADD_LAND_REQUEST,
-                data: { buyType, floor, room, title, description, eumpmeon, lia, address, filename:imagePath }
+                data: { buyType, floor, room, toilet, title, description, eumpmeon, lia, address, filename:imagePath }
             })
-        },[buyType, floor, room, title, description, eumpmeon, lia, address, imagePath, dispatch]);
+        },[buyType, floor, room, toilet, title, description, eumpmeon, lia, address, imagePath, dispatch]);
 
 
         //upload
@@ -48,6 +50,7 @@ const LandSearch = () => {
             action: 'http://127.0.0.1:4000/land/upload/image',
             listType: "picture",
             multiple: false,
+            status: 'done',
             accept: "image/*",
             beforeUpload: (file) => {
                 const imageFormData = new FormData();
@@ -132,7 +135,14 @@ const LandSearch = () => {
                                         <Form onFinish={onUploadData}>
                                             <div style={{ textAlign:'center' }}>
                                             <ImgCrop rotationSlider>
-                                                <Upload.Dragger {...uploadProps}>
+                                                <Upload.Dragger {...uploadProps}
+                                                    onChange={({file, event}) => {
+                                                        if(uploadImageDone) {
+                                                            file.status = 'done';
+                                                        }
+                                                        return console.log({file})
+                                                    }}
+                                                >
                                                     <div style={{ cursor:'pointer', width:'100%', textAlign:'center' }}>
                                                         <CloudUploadOutlined style={{ fontSize:'2rem', color:'skyblue' }} />
                                                         <br />
@@ -145,6 +155,7 @@ const LandSearch = () => {
                                                 <BuyType setBuyType={setBuyType} />
                                                 <Floor setFloor={setFloor} />
                                                 <Room setRoom={setRoom} />
+                                                <Toilet setToilet={setToilet} />
                                                 <br />
                                                 <div style={{ display:'flex', marginTop:'5px' }}>
                                                     <label style={{ margin:'auto 0' }} htmlFor='tit'>큰제목</label>
