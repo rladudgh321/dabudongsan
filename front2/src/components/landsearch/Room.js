@@ -1,12 +1,16 @@
-import React, { useState } from 'react';
-import { Button, Dropdown, Space, message } from 'antd';
 import { DownOutlined } from '@ant-design/icons';
+import { Button, Dropdown, Space } from 'antd';
+import { useEffect, useState } from 'react';
+import { useSelector } from 'react-redux';
 
-const Room = ({setRoom}) => {
-  const [ rom, setRom ] = useState(0);
+
+const Room = ({room='0', onChangeRoom, setRoom}) => {
+  const { addLandDone } = useSelector((state) => state.land);
+  const [rom, setRom] = useState(room);
+
     const items = [
         {
-          label: '방',
+          label: '방 0개',
           key: '0',
         },
         {
@@ -35,21 +39,25 @@ const Room = ({setRoom}) => {
         },
       ];
     const handleMenuClick = (e) => {
-        // message.info('Click on menu item.');
         setRom(e.key);
-        console.log(e.key);
-        setRoom('방 ' + e.key + '개');
+        setRoom(`방 ${e.key}개`);
     };
     const menuProps = {
         items,
         onClick: handleMenuClick,
+        onChange: onChangeRoom,
     };
+    useEffect(() => {
+      if(addLandDone) {
+        setRom(0);
+      }
+    },[addLandDone]);
     return (
         <>
             <Dropdown menu={menuProps}>
                 <Button>
                     <Space style={{ display:'flex' }}>
-                    <div>{'방 ' + rom + '개'}</div>
+                    <div>{`방 ${rom}개`}</div>
                     <DownOutlined />
                     </Space>
                 </Button>

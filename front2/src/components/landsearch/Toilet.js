@@ -1,12 +1,15 @@
 import { DownOutlined } from '@ant-design/icons';
 import { Button, Dropdown, Space } from 'antd';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
+import { useSelector } from 'react-redux';
 
-const Toilet = ({setToilet}) => {
-  const [ toil, setToil ] = useState(0);
+const Toilet = ({toilet='0', onChangeToilet, setToilet}) => {
+  const { addLandDone } = useSelector((state) => state.land);
+  const [ toil, setToil ] = useState(toilet);
+  
     const items = [
         {
-          label: '화',
+          label: '화 0개',
           key: '0',
         },
         {
@@ -35,21 +38,25 @@ const Toilet = ({setToilet}) => {
         },
       ];
     const handleMenuClick = (e) => {
-        // message.info('Click on menu item.');
         setToil(e.key);
-        console.log(e.key);
-        setToilet('화 ' + e.key + '개');
+        setToilet(`화 ${e.key}개`);
     };
     const menuProps = {
         items,
         onClick: handleMenuClick,
+        onChange: onChangeToilet,
     };
+    useEffect(() => {
+      if(addLandDone) {
+        setToil(0);
+      }
+    },[addLandDone]);
     return (
         <>
             <Dropdown menu={menuProps}>
                 <Button>
                     <Space style={{ display:'flex' }}>
-                    <div>{'화' + toil + '개'}</div>
+                    <div>{`화 ${toil}개`}</div>
                     <DownOutlined />
                     </Space>
                 </Button>

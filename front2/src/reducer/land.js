@@ -2,6 +2,7 @@ import { produce } from "immer";
 import shortid from 'short-id';
 const initialState = {
     imagePath: null,
+    showImage: false,
     eumpmeon:null,
     lia:null,
     address:null,
@@ -49,6 +50,7 @@ export const ADD_LAND_FAILURE='ADD_LAND_FAILURE';
 export const UPLOAD_IMAGE_REQUEST='UPLOAD_IMAGE_REQUEST';
 export const UPLOAD_IMAGE_SUCCESS='UPLOAD_IMAGE_SUCCESS';
 export const UPLOAD_IMAGE_FAILURE='UPLOAD_IMAGE_FAILURE';
+export const showImageFalse = 'showImageFalse';
 
 /*
 타이틀: 전세 2억 5천만 보증금 5천만
@@ -75,6 +77,9 @@ export const dummyLand = (data) => ({
 
 const landReducer = (state = initialState, action) => produce(state, (draft => {
     switch(action.type) {
+        case showImageFalse:
+            draft.addLandDone = false;
+            break;
         case ADD_LAND_REQUEST :
             draft.addLandLoading = true;
             draft.addLandDone = false;
@@ -83,9 +88,6 @@ const landReducer = (state = initialState, action) => produce(state, (draft => {
         case ADD_LAND_SUCCESS :
             draft.addLandLoading = false;
             draft.addLandDone = true;
-            // draft.eumpmeon = action.data.eumpmeon;
-            // draft.lia = action.data.lia;
-            // draft.address = action.data.address;
             draft.landFunc.unshift(dummyLand(action.data));
             break;
         case ADD_LAND_FAILURE :
@@ -101,6 +103,7 @@ const landReducer = (state = initialState, action) => produce(state, (draft => {
             draft.uploadImageLoading = false;
             draft.uploadImageDone = true;
             draft.imagePath = action.data;
+            draft.showImage = false;
             break;
         case UPLOAD_IMAGE_FAILURE :
             draft.uploadImageLoading = false;

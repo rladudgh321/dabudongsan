@@ -1,21 +1,18 @@
-import React from 'react';
 import { Select, Space } from 'antd';
 
 
+const BuyType = ({buyType, onChangeBuyType}) => {
 
-const BuyType = ({setBuyType}) => {
-  const handleChange = (value) => {
-    setBuyType(value);
-  };
   return (
     <>
       <Space wrap>
         <Select
-          defaultValue="매물 종류"
+          value={buyType || '매물 종류'}
+          defaultValue= '매물 종류'
           style={{
             width: 120,
           }}
-          onChange={handleChange}
+          onChange={onChangeBuyType}
           options={[
             {
               value: '아파트',
