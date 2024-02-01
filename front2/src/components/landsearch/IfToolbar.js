@@ -1,14 +1,13 @@
-import React from 'react';
-import { Input, Row, Col, Button, Dropdown, Space, message, ConfigProvider } from 'antd';
-import LandType from './LandType';
+import { CompassOutlined, ReloadOutlined, UnorderedListOutlined } from '@ant-design/icons';
+import { Button, Col, ConfigProvider, Input, Row } from 'antd';
 import BuyType from './BuyType';
-import Theme from './Theme';
-import Room from './Room';
+import LandType from './LandType';
 import RestRoom from './RestRoom';
+import Room from './Room';
 import Size from './Size';
-import {ReloadOutlined, CompassOutlined, UnorderedListOutlined} from '@ant-design/icons';
+import Theme from './Theme';
 
-const IfToolbar = () => {
+const IfToolbar = ({admin}) => {
     return (
         <>
             <Row style={{ background:'#ddd', height:'120px', padding:'10px', alignItems:'center' }}>
@@ -33,10 +32,10 @@ const IfToolbar = () => {
                         },
                     }}
                     >
-                        <Button.Group>
+                        {admin || <Button.Group>
                             <Button><CompassOutlined /> 지도</Button>
                             <Button><UnorderedListOutlined /> 목록</Button>
-                        </Button.Group>
+                        </Button.Group>}
                     </ConfigProvider>
                 </Col>
             </Row>

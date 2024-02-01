@@ -22,13 +22,15 @@ import Link from 'next/link';
 // );
 
 const Infinite = ({ landFunc }) => {
-
+    console.log({ landFunc });
 
     return (
         <>
             <List.Item>
                 <div style={{display:'flex'}}>
-                    <Link href='/landsearch/info'><Image alt='grim' width={120} height={90} src={landFunc.image.src} style={{ borderRadius:'30px', flex:'1' }} /></Link>
+                    <Link href={`/landsearch/${landFunc.id}`}>
+                        <Image alt='grim' width={120} height={90} src={landFunc.image.src} style={{ borderRadius:'30px', flex:'1' }} />
+                    </Link>
                     <Card style={{fontSize:'0.5rem', flex:'1', position:'relative'}}
                         actions={[
                                 <div key='0sta' style={{ display:'flex', cursor:'default',  width:'18vw', position:'absolute', top:0, background:'white' }}>

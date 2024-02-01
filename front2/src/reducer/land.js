@@ -15,26 +15,34 @@ const initialState = {
     landFunc:[{
         id:1,
         image:{src:'/img/1/office.png'},
-        status: 'done',
-        options:{ landType:'빌라', floor:'50', room:'방10', toilet: '화4' },
+        status: true,
+        options:{ landType:'빌라', floor:'50', room:'방10', toilet: '화4', buyType:'전세', theme: '역세권' },
         title: '전세 10억 보증금 5억',
         address: '대전 동구 가양동 323-21',
-        description:'전/월세 가능한 초호화 빌라 곧 역세권, 재개발부지'
+        description:'전/월세 가능한 초호화 빌라 곧 역세권, 재개발부지',
+        price:'전세2억',
+        count:0,
     },{
         id:2,
         image:{src:'/img/1/office.png'},
-        options:{ landType:'빌라', floor:'50', room:'방10', toilet: '화4' },
+        status: true,
+        options:{ landType:'빌라', floor:'50', room:'방10', toilet: '화4', buyType:'전세', theme: '역세권' },
         title: '전세 10억 보증금 5억',
         address: '대전 동구 가양동 323-21',
-        description:'전/월세 가능한 초호화 빌라 곧 역세권, 재개발부지'
+        description:'전/월세 가능한 초호화 빌라 곧 역세권, 재개발부지',
+        price:'전세2억',
+        count:1,
     },{
         id:3,
         image:{src:'/img/1/office.png'},
-        options:{ landType:'빌라', floor:'50', room:'방10', toilet: '화4' },
+        status: true,
+        options:{ landType:'빌라', floor:'50', room:'방10', toilet: '화4', buyType:'전세', theme: '역세권' },
         title: '전세 10억 보증금 5억',
         address: '대전 동구 가양동 323-21',
-        description:'전/월세 가능한 초호화 빌라 곧 역세권, 재개발부지'
-    }]
+        description:'전/월세 가능한 초호화 빌라 곧 역세권, 재개발부지',
+        price:'전세2억',
+        count:2,
+    },]
 }
 
 // const dummyImage = (data) => ({
